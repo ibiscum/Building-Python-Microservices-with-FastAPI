@@ -1,15 +1,1 @@
-anyio
-click
-colorama
-dependency-injector
-fastapi
-h11
-idna
-lagom
-pydantic
-python-multipart
-six
-sniffio
-starlette
-typing_extensions
-uvicorn
+

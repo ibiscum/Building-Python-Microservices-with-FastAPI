@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.responses import PlainTextResponse
 from starlette.exceptions import HTTPException as GlobalStarletteHTTPException
@@ -65,3 +66,7 @@ def global_exception_handler(req: Request, ex: str):
 @app.exception_handler(RequestValidationError)
 def validationerror_exception_handler(req: Request, ex: str):
     return PlainTextResponse(f"Error message: {ex}", status_code=400)
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

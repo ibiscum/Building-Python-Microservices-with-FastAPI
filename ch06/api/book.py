@@ -14,10 +14,12 @@ router = APIRouter()
 router.add_event_handler("startup", create_db_client)
 router.add_event_handler("shutdown", disconnect_db_client)
 
+
 def json_serial(obj):
     if isinstance(obj, (datetime, date)):
         return obj.strftime('%Y-%m-%dT%H:%M:%S.%f')
-    raise TypeError ("The type %s not serializable." % type(obj))
+    raise TypeError("The type %s not serializable." % type(obj))
+
 
 @router.post("/book/create")
 def create_book(req:BookReq): 

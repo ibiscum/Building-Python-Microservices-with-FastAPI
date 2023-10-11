@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 
-
 from lagom import Container
 from lagom.integrations.fast_api import FastApiIntegration
 

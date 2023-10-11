@@ -7,7 +7,6 @@ from dependency_injector.wiring import inject, Provide
 from repository.admin import AdminRepository
 from containers.single_container import Container
 
-
 router = APIRouter()
 
 

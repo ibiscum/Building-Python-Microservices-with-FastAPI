@@ -1,5 +1,7 @@
+import uvicorn
 from fastapi import FastAPI
-from api import book, buyer, buyer_async, cart, receipt, order, login, profile, purchase, reference
+from api import book, buyer, buyer_async, cart, receipt, order, login, \
+    profile, purchase, reference
 
 app = FastAPI()
 app.include_router(purchase.router, prefix="/ch06")
@@ -12,3 +14,6 @@ app.include_router(login.router, prefix="/ch06")
 app.include_router(profile.router, prefix="/ch06")
 app.include_router(book.router, prefix="/ch06")
 app.include_router(reference.router, prefix="/ch06")
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

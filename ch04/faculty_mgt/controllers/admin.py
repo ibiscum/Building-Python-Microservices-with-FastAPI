@@ -9,18 +9,23 @@ from faculty_mgt.services.login import FacultyLoginService
 from faculty_mgt.services.faculty import FacultyService
 
 from uuid import uuid4
-from json import loads
+
 router = APIRouter()
 
+
 @router.post('/account/signup')
-def signup_faculty(signup:SignupReq): 
-    account:Signup = Signup(faculty_id=signup.faculty_id, username=signup.username, password=signup.password, sign_id=uuid4().int)
+def signup_faculty(signup: SignupReq):
+    account: Signup = Signup(faculty_id=signup.faculty_id,
+                             username=signup.username,
+                             password=signup.password, sign_id=uuid4().int)
     signup_service = FacultySignupService()
     result = signup_service.add_signup(account)
-    if result == True:
+    if result is True:
         return jsonable_encoder(account)
-    else: 
-        return JSONResponse(content={'message':'insertion problem encountered'}, status_code=500)
+    else:
+        return JSONResponse(content={'message':
+                            'insertion problem encountered'},
+                            status_code=500)
 
 @router.get('/account/signup/approved')
 def approved_signup(sign_id:int): 

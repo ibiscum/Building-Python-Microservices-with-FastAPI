@@ -1,3 +1,4 @@
+import uvicorn
 from enum import Enum
 from typing import Optional, List, Dict
 from uuid import UUID, uuid1
@@ -396,3 +397,7 @@ def create_cookies(resp: Response, id: UUID, username: str = ''):
     resp.set_cookie(key="userkey", value=username)
     resp.set_cookie(key="identity", value=str(id))
     return {"message": "remember-me tokens created"}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

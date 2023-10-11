@@ -1,4 +1,5 @@
-from pydantic import BaseSettings
+import uvicorn
+from pydantic_settings import BaseSettings
 from datetime import date
 import os
 
