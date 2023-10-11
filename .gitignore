@@ -3,3 +3,4 @@
 *.log
 request_log.txt
 __pycache__
+*.bak
