@@ -48,7 +48,7 @@ sniffio==1.2.0
 starlette==0.19.1
 starlette-graphene3==0.6.0
 toml==0.10.2
-tornado==6.2
+tornado==6.3.3
 typing_extensions==4.3.0
 uvicorn==0.18.2
 vine==5.0.0
