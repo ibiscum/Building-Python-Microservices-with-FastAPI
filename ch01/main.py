@@ -12,7 +12,6 @@ from datetime import date, datetime
 from string import ascii_lowercase
 from random import random
 
-
 app = FastAPI()
 
 valid_users = dict()
