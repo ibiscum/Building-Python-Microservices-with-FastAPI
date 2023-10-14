@@ -33,7 +33,7 @@ odmantic==0.5.0
 orjson==3.7.7
 packaging==21.3
 passlib==1.7.4
-Pillow==9.2.0
+Pillow==10.0.1
 pluggy==1.0.0
 py==1.11.0
 pyasn1==0.4.8
