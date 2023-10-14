@@ -1,5 +1,9 @@
 aiofiles
 anyio
+<<<<<<< HEAD
+=======
+asyncpg
+>>>>>>> d44e8b1 (Change handling of requirements.)
 beanie
 blinker
 certifi
@@ -7,9 +11,15 @@ charset-normalizer
 click
 colorama
 dependency-injector
+<<<<<<< HEAD
 ecdsa
 Faker
 fastapi
+=======
+Faker
+fastapi
+gino
+>>>>>>> d44e8b1 (Change handling of requirements.)
 greenlet
 h11
 httpcore
