@@ -2,8 +2,9 @@ from typing import List
 from enum import Enum
 from datetime import datetime
 
-class Major(str, Enum): 
-    CS='Computer Science'
+
+class Major(str, Enum):
+    CS = 'Computer Science'
     IT='Information Technology'
     Math='Mathematics'
     Chem='Chemistry'
@@ -100,8 +101,8 @@ class StudentBin:
         self.stud_id:int = stud_id 
         self.faculty_id:int = faculty_id 
         self.assignment:List[Assignment] = list()
-        
-    
+   
+
     def __repr__(self): 
         return ' '.join([str(self.bin_id), str(self.stud_id), str(self.faculty_id)])
 

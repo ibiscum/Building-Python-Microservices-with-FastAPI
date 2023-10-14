@@ -27,8 +27,8 @@ async def log_middleware(request: Request, call_next):
         logger.info('Request to access ' + request.url.path)
         try:
             response = await call_next(request)
-        except Exception as ex:
-            logger.error(f"Request to " + request.url.path + " failed: {ex}")
+        except Exception:
+            logger.error("Request to " + request.url.path + " failed")
             response = JSONResponse(content={"success": False},
                                     status_code=500)
         finally:
@@ -49,7 +49,7 @@ def exception_handler_faculty(request: Request,
 
 
 @app.exception_handler(RedirectLibraryPortalException)
-def exception_handler_library(request: Request, 
+def exception_handler_library(request: Request,
                               exc: RedirectLibraryPortalException) -> Response:
     return RedirectResponse(url='http://localhost:8000/ch04/library/index')
 

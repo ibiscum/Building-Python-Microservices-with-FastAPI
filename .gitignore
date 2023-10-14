@@ -1,5 +1,4 @@
 .venv
 *.bak
 *.log
-request_log.txt
 __pycache__

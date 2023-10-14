@@ -3,7 +3,8 @@ from datetime import datetime
 from pydantic import BaseModel
 from library_mgt.models.data.library import Classification
 
-class BookReq(BaseModel): 
+
+class BookReq(BaseModel):
         book_id:int 
         title:str
         classification:Classification  

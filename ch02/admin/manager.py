@@ -31,7 +31,7 @@ def add_tour_destination(input: TourInput):
         tour_json = jsonable_encoder(tour)
         return JSONResponse(content=tour_json,
                             status_code=status.HTTP_201_CREATED)
-    except:
+    except Exception:
         return JSONResponse(content={"message": "invalid tour"},
                             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -44,7 +44,7 @@ def remove_tour_destination(id: UUID):
         del tours_locations[id]
         return JSONResponse(content={"message": "tour deleted"},
                             status_code=status.HTTP_202_ACCEPTED)
-    except:
+    except Exception:
         return JSONResponse(content={"message": "tour does not exist"},
                             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -64,7 +64,7 @@ def update_tour_destination(tour: Tour):
         tours_basic_info[tid] = tour_basic_info
         tours_locations[tid] = tour_location
         return {"message": "tour updated"}
-    except:
+    except Exception:
         return {"message": "tour does not exist"}
 
 
@@ -91,7 +91,7 @@ def list_valuable_visitors():
         sorted_orders_json = jsonable_encoder(sort_orders)
         return JSONResponse(content=sorted_orders_json,
                             status_code=status.HTTP_200_OK)
-    except:
+    except Exception:
         return JSONResponse(content={"message": "invalid operation"},
                             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -103,6 +103,6 @@ def approve_login(userid: UUID):
         del pending_users[userid]
         return JSONResponse(content={"message": "user approved"},
                             status_code=status.HTTP_200_OK)
-    except:
+    except Exception:
         return JSONResponse(content={"message": "invalid operation"},
                             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
