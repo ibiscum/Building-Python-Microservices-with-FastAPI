@@ -1,6 +1,5 @@
 aiofiles
 anyio
-asyncpg
 beanie
 blinker
 certifi
@@ -8,9 +7,9 @@ charset-normalizer
 click
 colorama
 dependency-injector
+ecdsa
 Faker
 fastapi
-gino
 greenlet
 h11
 httpcore
@@ -26,14 +25,17 @@ odmantic
 passlib
 pony
 psycopg2
+pyasn1
 pydantic
 pymongo
 pydantic-settings
 python-dateutil
 python-dotenv
+python-jose
 python-multipart
 requests
 rfc3986
+rsa
 six
 sniffio
 SQLAlchemy
