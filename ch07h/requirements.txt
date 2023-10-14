@@ -25,5 +25,5 @@ sniffio==1.2.0
 SQLAlchemy==1.4.39
 starlette==0.19.1
 typing_extensions==4.3.0
-urllib3==1.26.10
+urllib3==1.26.17
 uvicorn==0.18.2
