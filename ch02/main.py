@@ -31,7 +31,7 @@ async def log_transaction_filter(request: Request, call_next):
     method_name = request.method
     qp_map = request.query_params
     pp_map = request.path_params
-    with open("request_log.txt", mode="a") as reqfile:
+    with open("request.log", mode="a") as reqfile:
         content = f"method: {method_name}, query param: {qp_map}, path params:\
             {pp_map} received at {datetime.now()}"
         reqfile.write(content)
@@ -48,14 +48,14 @@ def index():
 
 @app.exception_handler(PostFeedbackException)
 def feedback_exception_handler(req: Request, ex: PostFeedbackException):
-    return JSONResponse(status_code=ex.status_code, content={
-        "message": f"error: {ex.detail}"})
+    return JSONResponse(status_code=ex.status_code,
+                        content={"message": f"error: {ex.detail}"})
 
 
 @app.exception_handler(PostRatingException)
 def rating_exception_handler(req: Request, ex: PostRatingException):
-    return JSONResponse(status_code=ex.status_code, content={
-        "message": f"error: {ex.detail}"})
+    return JSONResponse(status_code=ex.status_code,
+                        content={"message": f"error: {ex.detail}"})
 
 
 @app.exception_handler(GlobalStarletteHTTPException)

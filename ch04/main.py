@@ -1,5 +1,4 @@
 import uvicorn
-
 from fastapi import FastAPI, Depends, Request, Response
 from fastapi.responses import RedirectResponse, JSONResponse
 from gateway.api_router import call_api_gateway, \

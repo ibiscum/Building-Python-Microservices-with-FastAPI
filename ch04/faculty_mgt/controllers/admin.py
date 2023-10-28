@@ -52,8 +52,8 @@ def login_app(username: str, password: str):
     if login.password == password:
         return jsonable_encoder(login)
     else:
-        return JSONResponse(content={'message': 'login account does not \
-                                     exist'}, status_code=500)
+        return JSONResponse(content={
+            'message': 'login account does not exist'}, status_code=500)
 
 
 @router.post('/login/password/change')
@@ -61,11 +61,11 @@ def change_password(user_id: int, newpass: str):
     login_service: FacultyLoginService = FacultyLoginService()
     result = login_service.update_login_password(user_id, newpass)
     if result:
-        return JSONResponse(content={'message': 'password changed \
-                                     successfully'}, status_code=201)
+        return JSONResponse(content={
+            'message': 'password changed successfully'}, status_code=201)
     else:
-        return JSONResponse(content={'message': 'change password error'},
-                            status_code=500)
+        return JSONResponse(content={
+            'message': 'change password error'}, status_code=500)
 
 
 @router.post('/profile/add')
@@ -84,17 +84,20 @@ def create_profile(profile: FacultyReq):
 
 
 @router.patch('/profile/update')
-def update_profile(faculty_id:int, profile_details:FacultyDetails): 
-    profile_dict = profile_details.dict(exclude_unset=True)
-    faculty_service:FacultyService = FacultyService()
-    result = faculty_service.update_faculty(faculty_id, profile_dict )
-    if result: 
-        return JSONResponse(content={'message':'profile updated successfully'}, status_code=201)
-    else: 
-        return JSONResponse(content={'message':'update profile error'}, status_code=500)
+def update_profile(faculty_id: int, profile_details: FacultyDetails):
+    profile_dict = profile_details.model_dump(exclude_unset=True)
+    faculty_service: FacultyService = FacultyService()
+    result = faculty_service.update_faculty(faculty_id, profile_dict)
+    if result:
+        return JSONResponse(content={
+            'message': 'profile updated successfully'}, status_code=201)
+    else:
+        return JSONResponse(content={
+            'message': 'update profile error'}, status_code=500)
+
 
 @router.get('/profile/list/all')
-def list_faculty(): 
-    faculty_service:FacultyService = FacultyService()
+def list_faculty():
+    faculty_service: FacultyService = FacultyService()
     faculty_list = faculty_service.list_faculty()
     return jsonable_encoder(faculty_list)

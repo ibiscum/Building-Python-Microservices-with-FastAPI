@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI, Depends
 
 from api import recipes, users, posts, login, admin, keywords, \
@@ -19,3 +20,7 @@ app.include_router(complaints.router, prefix="/ch03")
 @app.get("/ch03")
 def index():
     return {"message": "Cooking Recipe Rating Prototype!"}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
