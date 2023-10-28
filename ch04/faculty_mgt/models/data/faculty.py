@@ -5,44 +5,52 @@ from datetime import datetime
 
 class Major(str, Enum):
     CS = 'Computer Science'
-    IT='Information Technology'
-    Math='Mathematics'
-    Chem='Chemistry'
-    Agri='Agriculture'
-    AgChem='Agricultural Chemistry'
-    Phy='Physics'
-    Stat='Statistics'
-    CommArts='Communication Arts'
-    FArts='Fine Arts'
-    Archi='Architecture'
-    Kinetics='Human Kinetics'
-    Physio='Physiology'
-    Psych='Psychology'
-    Hist='History'
-    Archeo='Archeology'
-    ChemEng='Chemical Engineering'
-    EEng='Electrical Engineering'
-    BioChem='BioChemistry'
-    MathEduc='Math Education'
+    IT = 'Information Technology'
+    Math = 'Mathematics'
+    Chem = 'Chemistry'
+    Agri = 'Agriculture'
+    AgChem = 'Agricultural Chemistry'
+    Phy = 'Physics'
+    Stat = 'Statistics'
+    CommArts = 'Communication Arts'
+    FArts = 'Fine Arts'
+    Archi = 'Architecture'
+    Kinetics = 'Human Kinetics'
+    Physio = 'Physiology'
+    Psych = 'Psychology'
+    Hist = 'History'
+    Archeo = 'Archeology'
+    ChemEng = 'Chemical Engineering'
+    EEng = 'Electrical Engineering'
+    BioChem = 'BioChemistry'
+    MathEduc = 'Math Education'
 
-class Faculty: 
-    def __init__(self, faculty_id:int, fname:str, lname:str, mname:str, age:int, major:Major, department:str):
-        self.faculty_id:int = faculty_id
-        self.fname:str = fname 
-        self.lname:str = lname 
-        self.mname:str = mname 
-        self.age:int = age 
-        self.major:Major = major
-        self.department:str = department
-         
-    def __repr__(self): 
-        return ' '.join([str(self.faculty_id), self.fname, self.lname, self.mname, str(self.age), self.major, self.department])
-    
+
+class Faculty:
+    def __init__(self, faculty_id: int, fname: str, lname: str, mname: str,
+                 age: int, major: Major, department: str):
+        self.faculty_id: int = faculty_id
+        self.fname: str = fname
+        self.lname: str = lname
+        self.mname: str = mname
+        self.age: int = age
+        self.major: Major = major
+        self.department: str = department
+
+    def __repr__(self):
+        return ' '.join([str(self.faculty_id), self.fname, self.lname,
+                         self.mname, str(self.age), self.major,
+                         self.department])
+
     def __str__(self): 
-        return ' '.join([str(self.faculty_id), self.fname, self.lname, self.mname, str(self.age), self.major, self.department])
+        return ' '.join([str(self.faculty_id), self.fname, self.lname,
+                         self.mname, str(self.age), self.major,
+                         self.department])
 
-class Signup: 
-    def __init__(self, sign_id:int, faculty_id:int, username:str, password:str):
+
+class Signup:
+    def __init__(self, sign_id: int, faculty_id: int, username: str,
+                 password: str):
         self.sign_id:int = sign_id
         self.faculty_id:int = faculty_id 
         self.username:str = username
