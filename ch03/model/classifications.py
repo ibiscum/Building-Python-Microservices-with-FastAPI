@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class Category(str, Enum):
     breakfast = "breakfast"
     lunch = "lunch"
@@ -16,6 +17,7 @@ class Category(str, Enum):
     vegetarian = "vegetarian"
     cookbook = "cookbook"
 
+
 class Origin(str, Enum):
     asian = "asian"
     mediterranean = "mediterranean"
@@ -27,11 +29,13 @@ class Origin(str, Enum):
     european = "european"
     jewish = "jewish"
     carribean = "carribean"
-    
-class UserType(str, Enum): 
+
+
+class UserType(str, Enum):
     admin = "admin"
     user = "user"
     guest = "guest"
+
 
 class RecipeRating(str, Enum):
     one = "1"

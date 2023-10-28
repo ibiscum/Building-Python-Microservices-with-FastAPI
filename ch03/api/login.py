@@ -30,7 +30,7 @@ def login_with_query(username: str, password: str,
         login_json = jsonable_encoder(login[0])
         return JSONResponse(content=login_json,
                             status_code=status.HTTP_201_CREATED)
-    else: 
+    else:
         return JSONResponse(content={"message": "user does not exists"},
                             status_code=status.HTTP_403_FORBIDDEN)
 
@@ -41,12 +41,15 @@ def login_with_model(user: LoginReq, loginservice: LoginRepository =
                      Depends(Provide[Container.loginservice])):
     login = [account for account in login_details.values()
              if account.username == user.username]
-    if login != None:
+    if login is not None:
         loginservice.login_audit(user.username, user.password)
         login_json = jsonable_encoder(login[0])
-        return JSONResponse(content=login_json, status_code=status.HTTP_201_CREATED)
-    else: 
-        return JSONResponse(content={"message": "user does not exists"}, status_code=status.HTTP_403_FORBIDDEN)
+        return JSONResponse(content=login_json,
+                            status_code=status.HTTP_201_CREATED)
+    else:
+        return JSONResponse(content={"message": "user does not exist"},
+                            status_code=status.HTTP_403_FORBIDDEN)
+
 
 container = Container()
 container.wire(modules=[sys.modules[__name__]])
