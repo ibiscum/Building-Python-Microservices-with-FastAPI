@@ -42,9 +42,7 @@ dependency-injector==4.41.0
 dnspython==2.4.2
     # via pymongo
 ecdsa==0.18.0
-    # via
-    #   -r requirements.in
-    #   python-jose
+    # via python-jose
 faker==19.10.0
     # via
     #   -r requirements.in
