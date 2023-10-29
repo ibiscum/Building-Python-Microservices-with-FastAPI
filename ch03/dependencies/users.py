@@ -19,9 +19,7 @@ def check_credential_error(request: Request):
         password = request.query_params.get("password")
         if username == password:
             raise HTTPException(
-                status_code=403,
-                detail="username should not be equal to password")
+                status_code=403, detail="username should not be equal to password"
+            )
     except Exception:
-        raise HTTPException(
-            status_code=500,
-            detail="encountered internal problems")
+        raise HTTPException(status_code=500, detail="encountered internal problems")

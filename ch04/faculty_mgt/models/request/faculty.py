@@ -3,7 +3,7 @@ from typing import Optional
 from faculty_mgt.models.data.faculty import Major
 
 
-class SignupReq(BaseModel):   
+class SignupReq(BaseModel):
     faculty_id: int
     username: str
     password: str

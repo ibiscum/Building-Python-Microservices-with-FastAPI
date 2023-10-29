@@ -101,9 +101,11 @@ class TourPreference(str, Enum):
 @router.get("/ch02/destinations/list/all")
 def list_tour_destinations():
     tours_json = jsonable_encoder(tours)
-    resp_headers = {'X-Access-Tours': 'Try Us',
-                    'X-Contact-Details': '1-900-888-TOLL',
-                    'Set-Cookie': 'AppName=ITS; Max-Age=3600; Version=1'}
+    resp_headers = {
+        "X-Access-Tours": "Try Us",
+        "X-Contact-Details": "1-900-888-TOLL",
+        "Set-Cookie": "AppName=ITS; Max-Age=3600; Version=1",
+    }
     return JSONResponse(content=tours_json, headers=resp_headers)
 
 
@@ -125,9 +127,8 @@ def show_amenities(id: UUID):
 
 @router.get("/ch02/destinations/mostbooked")
 def check_recommended_tour(resp: Response):
-    resp.headers['X-Access-Tours'] = 'TryUs'
-    resp.headers['X-Contact-Details'] = '1900888TOLL'
-    resp.headers['Content-Language'] = 'en-US'
-    ranked_desc_rates = sorted(tours.items(), key=lambda x: x[1].ratings,
-                               reverse=True)
+    resp.headers["X-Access-Tours"] = "TryUs"
+    resp.headers["X-Contact-Details"] = "1900888TOLL"
+    resp.headers["Content-Language"] = "en-US"
+    ranked_desc_rates = sorted(tours.items(), key=lambda x: x[1].ratings, reverse=True)
     return ranked_desc_rates

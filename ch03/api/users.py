@@ -18,21 +18,34 @@ class LoginReq(BaseModel):
     type: UserType
 
 
-router = APIRouter(dependencies=[Depends(count_user_by_type),
-                                 Depends(check_credential_error)])
+router = APIRouter(
+    dependencies=[Depends(count_user_by_type), Depends(check_credential_error)]
+)
 
 
 def create_login(id: UUID, username: str, password: str, type: UserType):
-    account = {"id": id, "username": username, "password": password,
-               "type": type}
+    account = {"id": id, "username": username, "password": password, "type": type}
     return account
 
 
-async def create_user_details(id: UUID, firstname: str, lastname: str,
-                              middle: str, bday: date, pos: str,
-                              login=Depends(create_login),):
-    user = {"id": id, "firstname": firstname, "lastname": lastname,
-            "middle": middle, "bday": bday, "pos": pos, "login": login}
+async def create_user_details(
+    id: UUID,
+    firstname: str,
+    lastname: str,
+    middle: str,
+    bday: date,
+    pos: str,
+    login=Depends(create_login),
+):
+    user = {
+        "id": id,
+        "firstname": firstname,
+        "lastname": lastname,
+        "middle": middle,
+        "bday": bday,
+        "pos": pos,
+        "login": login,
+    }
     return user
 
 
@@ -65,7 +78,8 @@ async def add_profile_login(profile=Depends(create_user_details)):
 
 @router.post("/users/add/model/profile")
 async def add_profile_login_models(
-     profile: Profile = Depends(Profile, use_cache=False)):
+    profile: Profile = Depends(Profile, use_cache=False)
+):
     user_details = jsonable_encoder(profile.user)
     login_details = jsonable_encoder(profile.login)
     user = UserDetails(**user_details)

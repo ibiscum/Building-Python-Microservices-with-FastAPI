@@ -1,4 +1,3 @@
-
 from uuid import UUID
 from model.classifications import Category, Origin
 from typing import List
@@ -13,8 +12,14 @@ class Ingredient:
 
 
 class Recipe:
-    def __init__(self, id: UUID, name: str, ingredients: List[Ingredient],
-                 cat: Category, orig: Origin):
+    def __init__(
+        self,
+        id: UUID,
+        name: str,
+        ingredients: List[Ingredient],
+        cat: Category,
+        orig: Origin,
+    ):
         self.id = id
         self.name = name
         self.ingredients = ingredients

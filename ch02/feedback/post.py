@@ -24,20 +24,22 @@ class Assessment(BaseModel):
 
 
 @router.post("/feedback/add")
-def post_tourist_feedback(touristId: UUID, tid: UUID, post: Post,
-                          bg_task: BackgroundTasks):
+def post_tourist_feedback(
+    touristId: UUID, tid: UUID, post: Post, bg_task: BackgroundTasks
+):
     if approved_users.get(touristId) is None and tours.get(tid) is None:
-        raise PostFeedbackException(detail='tourist and tour details invalid',
-                                    status_code=403)
+        raise PostFeedbackException(
+            detail="tourist and tour details invalid", status_code=403
+        )
     assessId = uuid1()
-    assessment = Assessment(id=assessId, post=post, tour_id=tid,
-                            tourist_id=touristId)
+    assessment = Assessment(id=assessId, post=post, tour_id=tid, tourist_id=touristId)
     feedback_tour[assessId] = assessment
-    tours[tid].ratings = (tours[tid].ratings + post.rating)/2
+    tours[tid].ratings = (tours[tid].ratings + post.rating) / 2
 
     assess_json = jsonable_encoder(assessment)
-    bg_task.add_task(audit_log_transaction, str(touristId),
-                     message="post_tourist_feedback")
+    bg_task.add_task(
+        audit_log_transaction, str(touristId), message="post_tourist_feedback"
+    )
     return JSONResponse(content=assess_json, status_code=200)
 
 
@@ -45,10 +47,9 @@ def post_tourist_feedback(touristId: UUID, tid: UUID, post: Post,
 def update_tour_rating(assessId: UUID, new_rating: StarRating):
     print(new_rating)
     if feedback_tour.get(assessId) is None:
-        raise PostRatingException(detail='tour assessment invalid',
-                                  status_code=403)
+        raise PostRatingException(detail="tour assessment invalid", status_code=403)
     tid = feedback_tour[assessId].tour_id
-    tours[tid].ratings = (tours[tid].ratings + new_rating)/2
+    tours[tid].ratings = (tours[tid].ratings + new_rating) / 2
     tour_json = jsonable_encoder(tours[tid])
     return JSONResponse(content=tour_json, status_code=200)
 
@@ -56,22 +57,24 @@ def update_tour_rating(assessId: UUID, new_rating: StarRating):
 @router.delete("/feedback/delete")
 async def delete_tourist_feedback(assessId: UUID, touristId: UUID):
     if approved_users.get(touristId) is None and feedback_tour.get(assessId):
-        raise PostFeedbackException(detail='tourist and tour details invalid',
-                                    status_code=403)
-    post_delete = [access for access in feedback_tour.values()
-                   if access.id == assessId]
+        raise PostFeedbackException(
+            detail="tourist and tour details invalid", status_code=403
+        )
+    post_delete = [access for access in feedback_tour.values() if access.id == assessId]
     for access in post_delete:
         is_owner = await check_post_owner(feedback_tour, access.id, touristId)
         if is_owner:
             del feedback_tour[access.id]
-    return JSONResponse(content={"message": f"deleted posts of {touristId}"},
-                        status_code=200)
+    return JSONResponse(
+        content={"message": f"deleted posts of {touristId}"}, status_code=200
+    )
 
 
 @router.get("/feedback/list")
 async def show_tourist_post(touristId: UUID):
     print(feedback_tour)
-    tourist_posts = [assess for assess in feedback_tour.values()
-                     if assess.tourist_id == touristId]
+    tourist_posts = [
+        assess for assess in feedback_tour.values() if assess.tourist_id == touristId
+    ]
     tourist_posts_json = jsonable_encoder(tourist_posts)
     return JSONResponse(content=tourist_posts_json, status_code=200)

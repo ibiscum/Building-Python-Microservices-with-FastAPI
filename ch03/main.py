@@ -1,8 +1,16 @@
 import uvicorn
 from fastapi import FastAPI, Depends
 
-from api import recipes, users, posts, login, admin, keywords, \
-    admin_mcontainer, complaints
+from api import (
+    recipes,
+    users,
+    posts,
+    login,
+    admin,
+    keywords,
+    admin_mcontainer,
+    complaints,
+)
 from dependencies.global_transactions import log_transaction
 
 app = FastAPI(dependencies=[Depends(log_transaction)])

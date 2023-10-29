@@ -1,4 +1,3 @@
-
 from uuid import UUID
 
 recipe_bad = dict()

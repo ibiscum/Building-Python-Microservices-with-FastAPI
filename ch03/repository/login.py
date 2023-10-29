@@ -1,4 +1,5 @@
 from datetime import date
+
 logs_visitor = dict()
 
 

@@ -18,11 +18,9 @@ deps = FastApiIntegration(container, request_singletons=[BadRecipeRepository])
 
 
 @router.post("/complaint/recipe")
-def report_recipe(rid: UUID,
-                  complaintservice=deps.depends(BadRecipeRepository)):
+def report_recipe(rid: UUID, complaintservice=deps.depends(BadRecipeRepository)):
     complaintservice.add_bad_recipe(rid)
-    return JSONResponse(content={"message": "reported bad recipe"},
-                        status_code=201)
+    return JSONResponse(content={"message": "reported bad recipe"}, status_code=201)
 
 
 @router.get("/complaint/list/all")

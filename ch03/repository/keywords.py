@@ -1,4 +1,3 @@
-
 from uuid import UUID
 from typing import List
 
@@ -6,7 +5,6 @@ keywords_recipe = dict()
 
 
 class KeywordRepository:
-
     def __init__(self):
         pass
 

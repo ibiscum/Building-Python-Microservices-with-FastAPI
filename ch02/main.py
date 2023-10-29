@@ -19,10 +19,7 @@ app.include_router(manager.router)
 app.include_router(user.router)
 app.include_router(destination.router)
 app.include_router(visit.router)
-app.include_router(
-    post.router,
-    prefix="/ch02/post"
-)
+app.include_router(post.router, prefix="/ch02/post")
 
 
 @app.middleware("http")
@@ -48,14 +45,16 @@ def index():
 
 @app.exception_handler(PostFeedbackException)
 def feedback_exception_handler(req: Request, ex: PostFeedbackException):
-    return JSONResponse(status_code=ex.status_code,
-                        content={"message": f"error: {ex.detail}"})
+    return JSONResponse(
+        status_code=ex.status_code, content={"message": f"error: {ex.detail}"}
+    )
 
 
 @app.exception_handler(PostRatingException)
 def rating_exception_handler(req: Request, ex: PostRatingException):
-    return JSONResponse(status_code=ex.status_code,
-                        content={"message": f"error: {ex.detail}"})
+    return JSONResponse(
+        status_code=ex.status_code, content={"message": f"error: {ex.detail}"}
+    )
 
 
 @app.exception_handler(GlobalStarletteHTTPException)
