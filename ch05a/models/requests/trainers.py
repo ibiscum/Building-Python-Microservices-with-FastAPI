@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class ProfileTrainersReq(BaseModel):
     id: int
     firstname: str
@@ -8,6 +9,6 @@ class ProfileTrainersReq(BaseModel):
     position: str
     tenure: float
     shift: int
-    
+
     class Config:
         orm_mode = True

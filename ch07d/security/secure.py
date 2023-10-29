@@ -20,35 +20,39 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="ch07/login/token")
 
+
 def get_password_hash(password):
     return crypt_context.hash(password)
-
 
 
 def verify_password(plain_password, hashed_password):
     return crypt_context.verify(plain_password, hashed_password)
 
 
-def authenticate(username, password, account:Login):
+def authenticate(username, password, account: Login):
     try:
         password_check = verify_password(password, account.passphrase)
         return password_check
     except Exception as e:
         print(e)
         return False
-    
+
+
 def create_access_token(data: dict, expires_after: timedelta):
     plain_text = data.copy()
     expire = datetime.utcnow() + expires_after
     plain_text.update({"exp": expire})
     encoded_jwt = jwt.encode(plain_text, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
-       
-def get_current_user(token: str = Depends(oauth2_scheme), sess:Session = Depends(sess_db)):
+
+
+def get_current_user(
+    token: str = Depends(oauth2_scheme), sess: Session = Depends(sess_db)
+):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"}
+        headers={"WWW-Authenticate": "Bearer"},
     )
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
@@ -58,10 +62,9 @@ def get_current_user(token: str = Depends(oauth2_scheme), sess:Session = Depends
         token_data = TokenData(username=username)
     except JWTError:
         raise credentials_exception
-    
+
     loginrepo = LoginRepository(sess)
     user = loginrepo.get_all_login_username(token_data.username)
     if user is None:
         raise credentials_exception
     return user
-

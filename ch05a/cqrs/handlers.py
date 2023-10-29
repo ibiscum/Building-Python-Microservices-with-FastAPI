@@ -1,6 +1,6 @@
+class IQueryHandler:
+    pass
 
-class IQueryHandler: 
-    pass 
 
-class ICommandHandler: 
+class ICommandHandler:
     pass

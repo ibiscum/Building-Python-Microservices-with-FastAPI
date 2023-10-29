@@ -10,8 +10,10 @@ from passlib.context import CryptContext
 
 crypt_context = CryptContext(schemes=["sha256_crypt", "md5_crypt"])
 
+
 def get_password_hash(password):
     return crypt_context.hash(password)
+
 
 def build_map():
     env = os.getenv("ENV", ".config")
@@ -23,22 +25,23 @@ def build_map():
         config = {
             "USERNAME": os.getenv("USERNAME", "guest"),
             "PASSWORD": os.getenv("PASSWORD", "guest"),
-            
         }
     return config
 
+
 http_digest = HTTPDigest()
 
+
 def authenticate(credentials: HTTPAuthorizationCredentials = Security(http_digest)):
-    
     hashed_credentials = credentials.credentials
     config = build_map()
     expected_credentials = standard_b64encode(
         bytes(f"{config['USERNAME']}:{config['PASSWORD']}", encoding="UTF-8"),
     )
     is_credentials = compare_digest(
-          bytes(hashed_credentials, encoding="UTF-8"), expected_credentials)
-    
+        bytes(hashed_credentials, encoding="UTF-8"), expected_credentials
+    )
+
     if not is_credentials:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

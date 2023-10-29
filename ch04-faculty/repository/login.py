@@ -27,8 +27,7 @@ class FacultyLoginRepository:
 
     def get_login(self, username: str):
         try:
-            login = [v for v in faculty_login_tbl.values()
-                     if v.username == username]
+            login = [v for v in faculty_login_tbl.values() if v.username == username]
             if not len(login) == 0:
                 return login[0]
             else:

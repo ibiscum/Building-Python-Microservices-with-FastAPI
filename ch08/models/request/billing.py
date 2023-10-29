@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import List, Dict
 from datetime import date
 
+
 class BillingReq(BaseModel):
     id: int
     payable: float

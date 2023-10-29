@@ -22,6 +22,7 @@ SECRET_KEY = "565f2855e4cea6b54714347ed73d1b3ba57ed696428867d4cbf89d575a3c7c4c"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
+
 class OAuth2PasswordBearerScopes(OAuth2):
     def __init__(
         self,
@@ -29,7 +30,6 @@ class OAuth2PasswordBearerScopes(OAuth2):
         scheme_name: str = None,
         scopes: dict = None,
         auto_error: bool = True,
-        
     ):
         if not scopes:
             scopes = {}
@@ -38,11 +38,11 @@ class OAuth2PasswordBearerScopes(OAuth2):
 
     async def __call__(self, request: Request) -> Optional[str]:
         header_authorization: str = request.headers.get("Authorization")
-        
+
         header_scheme, header_param = get_authorization_scheme_param(
             header_authorization
         )
-        
+
         if header_scheme.lower() == "bearer":
             authorization = True
             scheme = header_scheme
@@ -60,18 +60,20 @@ class OAuth2PasswordBearerScopes(OAuth2):
                 return None
         return param
 
+
 oauth2_scheme = OAuth2PasswordBearerScopes(
     tokenUrl="/ch07/login/token",
-    scopes={"admin_read": "admin role that has read only role",
-            "admin_write":"admin role that has write only role",
-            "bidder_read":"customer role that has read only role",
-            "bidder_write":"customer role that has write only role",
-            "auction_read":"buyer role that has read only role",
-            "auction_write":"buyer role that has write only role",
-            "user":"valid user of the application",
-            "guest":"visitor of the site"},
+    scopes={
+        "admin_read": "admin role that has read only role",
+        "admin_write": "admin role that has write only role",
+        "bidder_read": "customer role that has read only role",
+        "bidder_write": "customer role that has write only role",
+        "auction_read": "buyer role that has read only role",
+        "auction_write": "buyer role that has write only role",
+        "user": "valid user of the application",
+        "guest": "visitor of the site",
+    },
 )
-
 
 
 def create_access_token(data: dict, expires_delta: timedelta):
@@ -79,29 +81,33 @@ def create_access_token(data: dict, expires_delta: timedelta):
     expire = datetime.utcnow() + expires_delta
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    
-    
+
     return encoded_jwt
+
 
 def verify_password(plain_password, hashed_password):
     return crypt_context.verify(plain_password, hashed_password)
 
 
-def authenticate(username, password, account:Login):
+def authenticate(username, password, account: Login):
     try:
-        
         password_check = verify_password(password, account.passphrase)
         return password_check
     except Exception as e:
         print(e)
         return False
-       
-def get_current_user(security_scopes: SecurityScopes, token: str = Depends(oauth2_scheme), sess:Session = Depends(sess_db)):
+
+
+def get_current_user(
+    security_scopes: SecurityScopes,
+    token: str = Depends(oauth2_scheme),
+    sess: Session = Depends(sess_db),
+):
     if security_scopes.scopes:
         authenticate_value = f'Bearer scope="{security_scopes.scope_str}"'
     else:
         authenticate_value = f"Bearer"
-    
+
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -118,7 +124,7 @@ def get_current_user(security_scopes: SecurityScopes, token: str = Depends(oauth
         raise credentials_exception
     loginrepo = LoginRepository(sess)
     user = loginrepo.get_all_login_username(token_data.username)
-  
+
     if user is None:
         raise credentials_exception
 
@@ -133,7 +139,9 @@ def get_current_user(security_scopes: SecurityScopes, token: str = Depends(oauth
     return user
 
 
-def get_current_valid_user(current_user: Login = Security(get_current_user, scopes=["user"])):
+def get_current_valid_user(
+    current_user: Login = Security(get_current_user, scopes=["user"])
+):
     if current_user == None:
         raise HTTPException(status_code=400, detail="Invalid user")
     return current_user

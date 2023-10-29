@@ -9,6 +9,7 @@ app.include_router(profile.router, prefix="/ch07")
 app.include_router(auction.router, prefix="/ch07")
 app.include_router(bid.router, prefix="/ch07")
 
+
 @app.get("/index")
-def index(): 
+def index():
     return {"content": "welcome"}

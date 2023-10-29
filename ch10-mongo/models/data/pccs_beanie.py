@@ -2,37 +2,41 @@ from typing import Optional, List
 from beanie import Document
 from bson import datetime, ObjectId
 
+
 class Login(Document):
-    id: int 
-    username: str 
+    id: int
+    username: str
     password: str
-      
+
     class Collection:
         name = "login"
 
+
 class Occupation(Document):
-    id: int 
+    id: int
     name: str
-    
+
     class Collection:
         name = "occupation"
+
 
 class Location(Document):
     id: int
     city: str
     state: str
     country: str
-    
+
     class Collection:
         name = "location"
-    
+
 
 class Education(Document):
     id: int
     name: str
-    
+
     class Collection:
         name = "education"
+
 
 class Profile(Document):
     id: int
@@ -43,9 +47,10 @@ class Profile(Document):
     login_id: int
     official_id: str
     date_employed: datetime.datetime
-    
+
     class Collection:
         name = "profile"
+
 
 class Respondent(Document):
     id: int
@@ -64,25 +69,28 @@ class Respondent(Document):
     school: str
     marital: bool
     count_kids: int
-    
+
     class Collection:
         name = "respondent"
-    
+
+
 class Question(Document):
     id: int
     statement: str
     type: int
-    
+
     class Collection:
         name = "question"
+
 
 class Choices(Document):
     id: int
     question_id: int
     choice: str
-    
+
     class Collection:
         name = "choices"
+
 
 class Answers(Document):
     id: int
@@ -90,12 +98,6 @@ class Answers(Document):
     question_id: int
     answer_choice: int
     answer_text: str
-    
+
     class Collection:
         name = "answers"
-
-
-
-
-
-

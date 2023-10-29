@@ -24,28 +24,30 @@ thread_pool_scheduler = ThreadPoolScheduler(thread_count)
 router = APIRouter()
 
 
-    
 @router.post("/sales/add")
 async def add_sales(req: SalesReq):
     sales_dict = req.dict(exclude_unset=True)
     repo = SalesRepository()
     result = await repo.insert_sales(sales_dict)
-    if result == True: 
-        return req 
-    else: 
-        return JSONResponse(content={'message':'update trainer profile problem encountered'}, status_code=500)
-    
-    
+    if result == True:
+        return req
+    else:
+        return JSONResponse(
+            content={"message": "update trainer profile problem encountered"},
+            status_code=500,
+        )
+
+
 @router.get("/sales/list/quota")
 async def list_sales_by_quota():
     loop = asyncio.get_event_loop()
     observer = create_observable(loop)
-    
+
     observer.subscribe(
         on_next=lambda value: print("Received Instruction to buy {0}".format(value)),
         on_completed=lambda: print("Completed trades"),
         on_error=lambda e: print(e),
-        scheduler = AsyncIOScheduler(loop)   
+        scheduler=AsyncIOScheduler(loop),
     )
-    
+
     return {"message": "Notification sent in the background"}

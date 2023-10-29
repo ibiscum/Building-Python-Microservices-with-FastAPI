@@ -1,20 +1,25 @@
 from piccolo.columns import ForeignKey, Integer, Varchar, Text, Date, Boolean, Float
 from piccolo.table import Table
 
+
 class Occupation(Table):
     name = Varchar()
+
 
 class Location(Table):
     city = Varchar()
     state = Varchar()
     country = Varchar()
-    
+
+
 class Login(Table):
     username = Varchar(unique=True)
     password = Varchar()
 
+
 class Education(Table):
     name = Varchar()
+
 
 class Profile(Table):
     fname = Varchar()
@@ -24,6 +29,7 @@ class Profile(Table):
     login_id = ForeignKey(Login, unique=True)
     official_id = Integer()
     date_employed = Date()
+
 
 class Respondent(Table):
     fname = Varchar()
@@ -41,23 +47,20 @@ class Respondent(Table):
     school = Varchar()
     marital = Boolean()
     count_kids = Integer()
-    
+
+
 class Question(Table):
     statement = Text()
     type = Integer()
 
+
 class Choices(Table):
     question_id = ForeignKey(Question)
     choice = Varchar()
+
 
 class Answers(Table):
     respondent_id = ForeignKey(Respondent)
     question_id = ForeignKey(Question)
     answer_choice = Integer()
     answer_text = Text()
-
-
-
-
-
-

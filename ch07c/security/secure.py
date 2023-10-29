@@ -11,21 +11,27 @@ crypt_context = CryptContext(schemes=["sha256_crypt", "md5_crypt"])
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="ch07/login/token")
 
+
 def get_password_hash(password):
     return crypt_context.hash(password)
+
 
 def verify_password(plain_password, hashed_password):
     return crypt_context.verify(plain_password, hashed_password)
 
-def authenticate(username, password, account:Login):
+
+def authenticate(username, password, account: Login):
     try:
         password_check = verify_password(password, account.passphrase)
         return password_check
     except Exception as e:
         print(e)
         return False
-    
-def get_current_user(token: str = Depends(oauth2_scheme), sess:Session = Depends(sess_db) ):
+
+
+def get_current_user(
+    token: str = Depends(oauth2_scheme), sess: Session = Depends(sess_db)
+):
     loginrepo = LoginRepository(sess)
     user = loginrepo.get_all_login_username(token)
     if user == None:
@@ -35,5 +41,3 @@ def get_current_user(token: str = Depends(oauth2_scheme), sess:Session = Depends
             headers={"WWW-Authenticate": "Bearer"},
         )
     return user
-
-       

@@ -16,12 +16,13 @@ class PeeweeConnectionState(_ConnectionState):
     def __getattr__(self, name):
         return self._state.get()[name]
 
+
 db = PostgresqlDatabase(
-    'fcms2',
-    user='postgres',
-    password='admin2255',
-    host='localhost',
-    port=5433, 
+    "fcms2",
+    user="postgres",
+    password="admin2255",
+    host="localhost",
+    port=5433,
 )
 
 db._state = PeeweeConnectionState()

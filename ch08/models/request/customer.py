@@ -1,9 +1,9 @@
-
 from pydantic import BaseModel
 from typing import List, Dict
 from datetime import date
 
-class CustomerReq(BaseModel): 
+
+class CustomerReq(BaseModel):
     id: int
     firstname: str
     lastname: str
@@ -13,4 +13,3 @@ class CustomerReq(BaseModel):
     status: int
     subscription_type: int
     login_id: int
-    

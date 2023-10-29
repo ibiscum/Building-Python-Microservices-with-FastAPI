@@ -11,9 +11,7 @@ app = FastAPI()
 
 origins = [
     "https://gzky.live",
-
     "https://google.com",
-
     "http://localhost:8080",
     "http://localhost:8000",
 ]
@@ -33,14 +31,15 @@ app.add_middleware(
 app.include_router(admin.router, prefix="/ch07")
 app.include_router(login.router, prefix="/ch07")
 
+
 @app.get("/index")
-def index(): 
+def index():
     return {"content": "welcome"}
 
 
 @app.exception_handler(AuthError)
 def handle_auth_error(request: Request, ex: AuthError):
-   
     return JSONResponse(status_code=ex.status_code, content=ex.error)
 
-#ch07i
+
+# ch07i

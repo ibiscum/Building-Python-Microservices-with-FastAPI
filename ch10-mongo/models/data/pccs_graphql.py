@@ -1,19 +1,23 @@
 from graphene import String, ObjectType, Int, Date, Boolean, Float
-  
+
+
 class LoginData(ObjectType):
-  id = Int(required=True)
-  username = String(required=True)
-  password = String(required=True)
-  
+    id = Int(required=True)
+    username = String(required=True)
+    password = String(required=True)
+
+
 class OccupationData(ObjectType):
     id = Int(required=True)
-    name =String(required=True)
+    name = String(required=True)
+
 
 class LocationData(ObjectType):
     id = Int(required=True)
     city = String(required=True)
     state = String(required=True)
     country = String(required=True)
+
 
 class ProfileData(ObjectType):
     id = Int(required=True)
@@ -24,6 +28,7 @@ class ProfileData(ObjectType):
     login_id = Int(required=True)
     official_id = String(required=True)
     date_employed = Date()
+
 
 class RespondentData(ObjectType):
     id = Int(required=True)
@@ -42,16 +47,19 @@ class RespondentData(ObjectType):
     school = String(required=True)
     marital = Boolean()
     count_kids = Int(required=True)
-    
+
+
 class QuestionData(ObjectType):
     id = Int(required=True)
     statement = String(required=True)
     type = Int(required=True)
 
+
 class ChoicesData(ObjectType):
     id = Int(required=True)
     question_id = Int(required=True)
     choice = String(required=True)
+
 
 class AnswersData(ObjectType):
     id = Int(required=True)
@@ -59,5 +67,3 @@ class AnswersData(ObjectType):
     question_id = Int(required=True)
     answer_choice = Int(required=True)
     answer_text = String(required=True)
-  
-  

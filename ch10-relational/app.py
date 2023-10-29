@@ -6,7 +6,22 @@ from starlette.routing import Mount
 from starlette.staticfiles import StaticFiles
 
 from survey.piccolo_app import APP_CONFIG
-from survey.api import login, occupation, answer, choices, location, profile, question, respondent, education, graphql, data_analysis, data_files, data_plots, data_stats
+from survey.api import (
+    login,
+    occupation,
+    answer,
+    choices,
+    location,
+    profile,
+    question,
+    respondent,
+    education,
+    graphql,
+    data_analysis,
+    data_files,
+    data_plots,
+    data_stats,
+)
 
 app = FastAPI(
     routes=[
@@ -36,4 +51,3 @@ app.include_router(data_plots.router, prefix="/ch10")
 app.include_router(data_analysis.router, prefix="/ch10")
 app.include_router(data_files.router, prefix="/ch10")
 app.include_router(graphql.router, prefix="/ch10")
-

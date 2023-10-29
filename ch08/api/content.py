@@ -14,11 +14,15 @@ async def add_content(req: ContentReq):
     content_dict = req.dict(exclude_unset=True)
     repo = ContentRepository()
     result = await repo.insert_content(content_dict)
-    if result == True: 
-        return req 
-    else: 
-        return JSONResponse(content={'message':'update trainer profile problem encountered'}, status_code=500)
-    
+    if result == True:
+        return req
+    else:
+        return JSONResponse(
+            content={"message": "update trainer profile problem encountered"},
+            status_code=500,
+        )
+
+
 @router.get("/content/list")
 async def list_content():
     repo = ContentRepository()

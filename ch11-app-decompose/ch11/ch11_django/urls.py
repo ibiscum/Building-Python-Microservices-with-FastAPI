@@ -16,7 +16,5 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from sports import views
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('index/', views.view_index)
-]
+
+urlpatterns = [path("admin/", admin.site.urls), path("index/", views.view_index)]

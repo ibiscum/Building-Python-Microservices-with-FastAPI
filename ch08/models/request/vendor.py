@@ -2,7 +2,8 @@ from pydantic import BaseModel
 from typing import List, Dict
 from datetime import date
 
-class VendorReq(BaseModel): 
+
+class VendorReq(BaseModel):
     id: int
     rep_firstname: str
     rep_lastname: str
