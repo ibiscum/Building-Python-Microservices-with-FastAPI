@@ -81,7 +81,8 @@ class Student:
 
 
 class Signup:
-    def __init__(self, sign_id: int, stud_id: int, username: str, password: str):
+    def __init__(self, sign_id: int, stud_id: int, username: str,
+                 password: str):
         self.sign_id: int = sign_id
         self.stud_id: int = stud_id
         self.username: str = username
@@ -89,17 +90,20 @@ class Signup:
 
     def __repr__(self):
         return " ".join(
-            [str(self.sign_id), str(self.stud_id), self.username, self.password]
+            [str(self.sign_id), str(self.stud_id), self.username,
+             self.password]
         )
 
     def __str__(self):
         return " ".join(
-            [str(self.sign_id), str(self.stud_id), self.username, self.password]
+            [str(self.sign_id), str(self.stud_id), self.username,
+             self.password]
         )
 
 
 class Login:
-    def __init__(self, user_id: int, stud_id: int, username: str, password: str):
+    def __init__(self, user_id: int, stud_id: int, username: str,
+                 password: str):
         self.user_id: int = user_id
         self.username: str = username
         self.password: str = password

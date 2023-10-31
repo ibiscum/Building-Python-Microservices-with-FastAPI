@@ -13,7 +13,7 @@ class StudentLoginRepository:
                 password=account.password,
             )
             stud_login_tbl[account.stud_id] = login
-        except:
+        except Exception:
             return False
         return True
 
@@ -21,14 +21,14 @@ class StudentLoginRepository:
         try:
             login = stud_login_tbl[user_id]
             login.password = newpass
-        except:
+        except Exception:
             return False
         return True
 
     def delete_login(self, user_id: int) -> bool:
         try:
             del stud_login_tbl[user_id]
-        except:
+        except Exception:
             return False
         return True
 

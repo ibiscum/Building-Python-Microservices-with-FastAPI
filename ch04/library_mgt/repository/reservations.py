@@ -6,7 +6,7 @@ class BookRequestRepository:
     def insert_request(self, request: BookRequest):
         try:
             book_request_tbl[request.req_id] = request
-        except:
+        except Exception:
             return False
         return True
 
@@ -14,14 +14,14 @@ class BookRequestRepository:
         try:
             request = book_request_tbl[req_id]
             request.book_id = book_id
-        except:
+        except Exception:
             return False
         return True
 
     def delete_request(self, req_id: int):
         try:
             del book_request_tbl[req_id]
-        except:
+        except Exception:
             return False
         return True
 

@@ -12,7 +12,8 @@ class AssignmentRepository:
             return False
         return True
 
-    def update_assignment(self, assgn_id: int, details: Dict[str, Any]) -> bool:
+    def update_assignment(self, assgn_id: int,
+                          details: Dict[str, Any]) -> bool:
         try:
             assignment = faculty_assignments_tbl[assgn_id]
             assignment_enc = jsonable_encoder(assignment)

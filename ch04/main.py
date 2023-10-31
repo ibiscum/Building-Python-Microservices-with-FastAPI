@@ -37,7 +37,8 @@ async def log_middleware(request: Request, call_next):
             response = await call_next(request)
         except Exception:
             logger.error("Request to " + request.url.path + " failed")
-            response = JSONResponse(content={"success": False}, status_code=500)
+            response = JSONResponse(content={"success": False},
+                                    status_code=500)
         finally:
             logger.info("Successfully accessed " + request.url.path)
             return response

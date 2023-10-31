@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import Dict, Any
 
 from fastapi.encoders import jsonable_encoder
 from student_mgt.models.data.students import Student
@@ -10,7 +10,7 @@ class StudentRepository:
     def insert_student(self, student: Student) -> bool:
         try:
             students_tbl[student.stud_id] = student
-        except:
+        except Exception:
             return False
         return True
 
@@ -23,14 +23,14 @@ class StudentRepository:
             students_tbl[stud_id] = namedtuple("Student", profile_dict.keys())(
                 *profile_dict.values()
             )
-        except:
+        except Exception:
             return False
         return True
 
     def delete_student(self, user_id: int) -> bool:
         try:
             del students_tbl[user_id]
-        except:
+        except Exception:
             return False
         return True
 

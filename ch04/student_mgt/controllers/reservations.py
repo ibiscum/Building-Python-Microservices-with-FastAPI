@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
 from fastapi.encoders import jsonable_encoder
 from json import dumps
 import httpx

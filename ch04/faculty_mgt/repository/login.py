@@ -1,5 +1,6 @@
 from typing import List
-from faculty_mgt.models.data.facultydb import faculty_signup_tbl, faculty_login_tbl
+from faculty_mgt.models.data.facultydb import faculty_signup_tbl, \
+    faculty_login_tbl
 from faculty_mgt.models.data.faculty import Login
 
 
@@ -14,7 +15,7 @@ class FacultyLoginRepository:
                 password=account.password,
             )
             faculty_signup_tbl[account.faculty_id] = login
-        except:
+        except Exception:
             return False
         return True
 
@@ -22,14 +23,14 @@ class FacultyLoginRepository:
         try:
             login = faculty_login_tbl[user_id]
             login.password = newpass
-        except:
+        except Exception:
             return False
         return True
 
     def delete_login(self, user_id: int) -> bool:
         try:
             del faculty_login_tbl[user_id]
-        except:
+        except Exception:
             return False
         return True
 

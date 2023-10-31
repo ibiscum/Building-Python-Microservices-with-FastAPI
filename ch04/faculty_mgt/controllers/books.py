@@ -18,7 +18,8 @@ def list_all_books():
 @router.get("/books/request/list")
 def list_all_request():
     with requests.Session() as sess:
-        response = sess.get("http://localhost:8000/ch04/library/book/request/list")
+        response = sess.get(
+            "http://localhost:8000/ch04/library/book/request/list")
         return response.json()
 
 
@@ -35,7 +36,8 @@ def request_borrow_book(request: BookRequestReq):
 @router.get("/books/issuance/list")
 def list_all_issuance():
     with requests.Session() as sess:
-        response = sess.get("http://localhost:8000/ch04/library/book/issuance/list")
+        response = sess.get(
+            "http://localhost:8000/ch04/library/book/issuance/list")
         return response.json()
 
 

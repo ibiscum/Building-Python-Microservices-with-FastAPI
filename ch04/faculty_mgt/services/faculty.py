@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import Dict, Any
 from faculty_mgt.repository.faculty import FacultyRepository
 from faculty_mgt.models.data.faculty import Faculty
 

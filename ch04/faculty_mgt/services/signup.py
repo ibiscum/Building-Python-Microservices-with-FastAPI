@@ -1,4 +1,3 @@
-from typing import List, Dict, Any
 from faculty_mgt.repository.signup import FacultySignupRepository
 from faculty_mgt.models.data.faculty import Signup
 

@@ -9,7 +9,7 @@ class BookRepository:
     def insert_book(self, book: Book) -> bool:
         try:
             book_tbl[book.book_id] = book
-        except:
+        except Exception:
             return False
         return True
 
@@ -22,14 +22,14 @@ class BookRepository:
             book_tbl[book_id] = namedtuple("Book", profile_dict.keys())(
                 *profile_dict.values()
             )
-        except:
+        except Exception:
             return False
         return True
 
     def delete_book(self, book_id: int) -> bool:
         try:
             del book_tbl[book_id]
-        except:
+        except Exception:
             return False
         return True
 

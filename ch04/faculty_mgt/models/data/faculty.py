@@ -73,7 +73,8 @@ class Faculty:
 
 
 class Signup:
-    def __init__(self, sign_id: int, faculty_id: int, username: str, password: str):
+    def __init__(self, sign_id: int, faculty_id: int, username: str,
+                 password: str):
         self.sign_id: int = sign_id
         self.faculty_id: int = faculty_id
         self.username: str = username
@@ -81,17 +82,20 @@ class Signup:
 
     def __repr__(self):
         return " ".join(
-            [str(self.sign_id), str(self.stud_id), self.username, self.password]
+            [str(self.sign_id), str(self.stud_id), self.username,
+             self.password]
         )
 
     def __str__(self):
         return " ".join(
-            [str(self.sign_id), str(self.stud_id), self.username, self.password]
+            [str(self.sign_id), str(self.stud_id), self.username,
+             self.password]
         )
 
 
 class Login:
-    def __init__(self, user_id: int, username: str, password: str, faculty_id: int):
+    def __init__(self, user_id: int, username: str, password: str,
+                 faculty_id: int):
         self.user_id: int = user_id
         self.username: str = username
         self.password: str = password
@@ -143,7 +147,8 @@ class Attendance:
 
 
 class Assignment:
-    def __init__(self, assgn_id: int, title: str, date_due: datetime, course: str):
+    def __init__(self, assgn_id: int, title: str, date_due: datetime,
+                 course: str):
         self.assgn_id: int = assgn_id
         self.title: str = title
         self.date_completed: datetime = None
@@ -182,7 +187,9 @@ class StudentBin:
         self.assignment: List[Assignment] = list()
 
     def __repr__(self):
-        return " ".join([str(self.bin_id), str(self.stud_id), str(self.faculty_id)])
+        return " ".join([str(self.bin_id), str(self.stud_id),
+                         str(self.faculty_id)])
 
     def __expr__(self):
-        return " ".join([str(self.bin_id), str(self.stud_id), str(self.faculty_id)])
+        return " ".join([str(self.bin_id), str(self.stud_id),
+                         str(self.faculty_id)])

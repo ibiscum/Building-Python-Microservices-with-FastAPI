@@ -60,7 +60,8 @@ class Book:
 
 
 class BookRequest:
-    def __init__(self, req_id: int, book_id: int, request_date: datetime, status: bool):
+    def __init__(self, req_id: int, book_id: int, request_date: datetime,
+                 status: bool):
         self.req_id: int = req_id
         self.book_id: int = book_id
         self.request_date: datetime = request_date
@@ -89,7 +90,8 @@ class BookRequest:
 
 class BookIssuance:
     def __init__(
-        self, issue_id: int, req_id: int, approved_by: str, approved_date: datetime
+        self, issue_id: int, req_id: int, approved_by: str,
+        approved_date: datetime
     ):
         self.issue_id: int = issue_id
         self.req_id: int = req_id

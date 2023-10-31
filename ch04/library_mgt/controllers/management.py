@@ -54,7 +54,8 @@ def approve_request(approval: BookIssuanceReq):
         return jsonable_encoder(book_approval)
     else:
         return JSONResponse(
-            content={"message": "book issuance not successful"}, status_code=500
+            content={"message": "book issuance not successful"},
+            status_code=500
         )
 
 
@@ -74,5 +75,6 @@ def return_issued_book(returning: BookReturnReq):
         return jsonable_encoder(returning)
     else:
         return JSONResponse(
-            content={"message": "book issuance not successful"}, status_code=500
+            content={"message": "book issuance not successful"},
+            status_code=500
         )

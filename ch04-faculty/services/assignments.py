@@ -1,5 +1,6 @@
 from typing import Dict, Any
-from repository.assignments import AssignmentRepository, AssignmentSubmissionRepository
+from repository.assignments import AssignmentRepository, \
+    AssignmentSubmissionRepository
 from models.data.faculty import Assignment
 from uuid import uuid4
 
@@ -26,7 +27,8 @@ class AssignmentService:
 
 class AssignmentSubmissionService:
     def __init__(self):
-        self.repo: AssignmentSubmissionRepository = AssignmentSubmissionRepository()
+        self.repo: AssignmentSubmissionRepository = \
+            AssignmentSubmissionRepository()
 
     def create_workbin(self, stud_id: int, faculty_id: int):
         bin_id = uuid4().int
