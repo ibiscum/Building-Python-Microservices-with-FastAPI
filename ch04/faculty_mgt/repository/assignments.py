@@ -1,7 +1,6 @@
 from fastapi.encoders import jsonable_encoder
 from typing import Dict, Any
-from faculty_mgt.models.data.facultydb import faculty_assignments_tbl, \
-    student_bin_tbl
+from faculty_mgt.models.data.facultydb import faculty_assignments_tbl, student_bin_tbl
 from faculty_mgt.models.data.faculty import Assignment, StudentBin
 from collections import namedtuple
 
@@ -14,8 +13,7 @@ class AssignmentRepository:
             return False
         return True
 
-    def update_assignment(self, assgn_id: int,
-                          details: Dict[str, Any]) -> bool:
+    def update_assignment(self, assgn_id: int, details: Dict[str, Any]) -> bool:
         try:
             assignment = faculty_assignments_tbl[assgn_id]
             assignment_enc = jsonable_encoder(assignment)

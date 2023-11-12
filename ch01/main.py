@@ -113,8 +113,7 @@ def delete_pending_users(accounts: List[str] = []):
 @app.post("/ch01/login/validate", response_model=ValidUser)
 def approve_user(user: User):
     if not valid_users.get(user.username) is None:
-        return ValidUser(id=None, username=None, password=None,
-                         passphrase=None)
+        return ValidUser(id=None, username=None, password=None, passphrase=None)
     else:
         valid_user = ValidUser(
             id=uuid1(),
@@ -174,8 +173,7 @@ def change_password(username: str, old_passw: str = "", new_passw: str = ""):
         return {"message": "user does not exist"}
     elif old_passw == "" or new_passw == "":
         characters = ascii_lowercase
-        temporary_passwd = "".join(random.choice(characters)
-                                   for i in range(passwd_len))
+        temporary_passwd = "".join(random.choice(characters) for i in range(passwd_len))
         user = valid_users.get(username)
         user.password = temporary_passwd
         user.passphrase = hashpw(temporary_passwd.encode(), gensalt())
@@ -357,8 +355,7 @@ def post_reply(username: str, id: UUID, post_type: PostType, post_reply: Post):
 
 
 @app.put("/ch01/discussion/posts/update/{username}")
-def update_discussion(username: str, id: UUID, post_type: PostType,
-                      post: Post):
+def update_discussion(username: str, id: UUID, post_type: PostType, post: Post):
     if valid_users.get(username) is None:
         return {"message": "user does not exist"}
     elif discussion_posts.get(id) is None:
@@ -417,8 +414,7 @@ def verify_headers(
 
 @app.get("/ch01/login/cookies")
 def access_cookie(
-    userkey: Optional[str] = Cookie(None),
-    identity: Optional[str] = Cookie(None)
+    userkey: Optional[str] = Cookie(None), identity: Optional[str] = Cookie(None)
 ):
     cookies["userkey"] = userkey
     cookies["identity"] = identity

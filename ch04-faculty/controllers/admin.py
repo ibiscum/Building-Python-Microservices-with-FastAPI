@@ -25,8 +25,7 @@ def signup_faculty(signup: SignupReq):
         return jsonable_encoder(account)
     else:
         return JSONResponse(
-            content={"message": "insertion problem encountered"},
-            status_code=500
+            content={"message": "insertion problem encountered"}, status_code=500
         )
 
 
@@ -47,8 +46,7 @@ def approved_signup(sign_id: int):
         return jsonable_encoder(account)
     else:
         return JSONResponse(
-            content={"message": "signup account does not exist"},
-            status_code=500
+            content={"message": "signup account does not exist"}, status_code=500
         )
 
 
@@ -60,8 +58,7 @@ def login_app(username: str, password: str):
         return jsonable_encoder(login)
     else:
         return JSONResponse(
-            content={"message": "login account does not exist"},
-            status_code=500
+            content={"message": "login account does not exist"}, status_code=500
         )
 
 
@@ -71,8 +68,7 @@ def change_password(user_id: int, newpass: str):
     result = login_service.update_login_password(user_id, newpass)
     if result:
         return JSONResponse(
-            content={"message": "password changed successfully"},
-            status_code=201
+            content={"message": "password changed successfully"}, status_code=201
         )
     else:
         return JSONResponse(
@@ -108,8 +104,7 @@ def update_profile(faculty_id: int, profile_details: FacultyDetails):
     result = faculty_service.update_faculty(faculty_id, profile_dict)
     if result:
         return JSONResponse(
-            content={"message": "profile updated successfully"},
-            status_code=201
+            content={"message": "profile updated successfully"}, status_code=201
         )
     else:
         return JSONResponse(

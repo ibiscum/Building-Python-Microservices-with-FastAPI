@@ -26,8 +26,7 @@ def add_books(book: BookReq):
         return jsonable_encoder(book)
     else:
         return JSONResponse(
-            content={"message": "book insertion not successful"},
-            status_code=500
+            content={"message": "book insertion not successful"}, status_code=500
         )
 
 
@@ -49,8 +48,7 @@ def delete_book(book_id: int):
         )
     else:
         return JSONResponse(
-            content={"message": "book insertion not successful"},
-            status_code=500
+            content={"message": "book insertion not successful"}, status_code=500
         )
 
 
@@ -62,8 +60,7 @@ def update_book_details(book_id: int, book_details: BookDetails):
     result = book_service.update_book(book_id, book_dict)
     if result:
         return JSONResponse(
-            content={"message": "book details updated successfully"},
-            status_code=201
+            content={"message": "book details updated successfully"}, status_code=201
         )
     else:
         return JSONResponse(

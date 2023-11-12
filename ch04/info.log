@@ -82,3 +82,27 @@ Log: [de5a2026-47b5-4533-accf-a96878c3ee7f: 2022-07-13T19:36:10.347792+0800 - IN
 Log: [de5a2026-47b5-4533-accf-a96878c3ee7f: 2022-07-13T19:36:10.353796+0800 - INFO - Successfully accessed /docs 
 Log: [a690c0f5-ef99-487f-805e-a5e0014d934f: 2022-07-13T19:36:11.043188+0800 - INFO - Request to access /openapi.json 
 Log: [a690c0f5-ef99-487f-805e-a5e0014d934f: 2022-07-13T19:36:11.061723+0800 - INFO - Successfully accessed /openapi.json 
+Log: [29cfe67d-31cf-469d-af21-a5f68474a01f: 2023-11-12T23:10:15.256341+0100 - INFO -            Request to access /docs 
+Log: [29cfe67d-31cf-469d-af21-a5f68474a01f: 2023-11-12T23:10:15.256341+0100 - INFO -            Request to access /docs 
+Log: [29cfe67d-31cf-469d-af21-a5f68474a01f: 2023-11-12T23:10:15.283605+0100 - INFO -            Successfully accessed /docs 
+Log: [29cfe67d-31cf-469d-af21-a5f68474a01f: 2023-11-12T23:10:15.283605+0100 - INFO -            Successfully accessed /docs 
+Log: [16469d06-cf92-4723-9822-f5e8acec59bd: 2023-11-12T23:10:17.218458+0100 - INFO -            Request to access /openapi.json 
+Log: [16469d06-cf92-4723-9822-f5e8acec59bd: 2023-11-12T23:10:17.218458+0100 - INFO -            Request to access /openapi.json 
+Log: [16469d06-cf92-4723-9822-f5e8acec59bd: 2023-11-12T23:10:17.264853+0100 - INFO -            Successfully accessed /openapi.json 
+Log: [16469d06-cf92-4723-9822-f5e8acec59bd: 2023-11-12T23:10:17.264853+0100 - INFO -            Successfully accessed /openapi.json 
+Log: [3141ba7b-e688-4743-b1d7-0415e35f42c1: 2023-11-12T23:10:42.558955+0100 - INFO -            Request to access /ch04/university/1 
+Log: [3141ba7b-e688-4743-b1d7-0415e35f42c1: 2023-11-12T23:10:42.558955+0100 - INFO -            Request to access /ch04/university/1 
+Log: [3141ba7b-e688-4743-b1d7-0415e35f42c1: 2023-11-12T23:10:42.604287+0100 - INFO -            Successfully accessed /ch04/university/1 
+Log: [3141ba7b-e688-4743-b1d7-0415e35f42c1: 2023-11-12T23:10:42.604287+0100 - INFO -            Successfully accessed /ch04/university/1 
+Log: [941a957a-fb1a-40e8-a2ac-eb4529b9c30e: 2023-11-12T23:10:42.634408+0100 - INFO -            Request to access /ch04/student/index 
+Log: [941a957a-fb1a-40e8-a2ac-eb4529b9c30e: 2023-11-12T23:10:42.634408+0100 - INFO -            Request to access /ch04/student/index 
+Log: [941a957a-fb1a-40e8-a2ac-eb4529b9c30e: 2023-11-12T23:10:42.687674+0100 - INFO -            Successfully accessed /ch04/student/index 
+Log: [941a957a-fb1a-40e8-a2ac-eb4529b9c30e: 2023-11-12T23:10:42.687674+0100 - INFO -            Successfully accessed /ch04/student/index 
+Log: [8fe9d246-40aa-4763-9d92-28bdab5aaa6e: 2023-11-12T23:35:12.703340+0100 - INFO -            Request to access /docs 
+Log: [8fe9d246-40aa-4763-9d92-28bdab5aaa6e: 2023-11-12T23:35:12.703340+0100 - INFO -            Request to access /docs 
+Log: [8fe9d246-40aa-4763-9d92-28bdab5aaa6e: 2023-11-12T23:35:12.717226+0100 - INFO -            Successfully accessed /docs 
+Log: [8fe9d246-40aa-4763-9d92-28bdab5aaa6e: 2023-11-12T23:35:12.717226+0100 - INFO -            Successfully accessed /docs 
+Log: [7dce52b9-d178-49e9-bcd1-50d80317164b: 2023-11-12T23:35:13.584894+0100 - INFO -            Request to access /openapi.json 
+Log: [7dce52b9-d178-49e9-bcd1-50d80317164b: 2023-11-12T23:35:13.584894+0100 - INFO -            Request to access /openapi.json 
+Log: [7dce52b9-d178-49e9-bcd1-50d80317164b: 2023-11-12T23:35:13.603334+0100 - INFO -            Successfully accessed /openapi.json 
+Log: [7dce52b9-d178-49e9-bcd1-50d80317164b: 2023-11-12T23:35:13.603334+0100 - INFO -            Successfully accessed /openapi.json 

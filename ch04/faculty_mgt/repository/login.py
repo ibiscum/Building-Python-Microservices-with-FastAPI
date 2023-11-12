@@ -1,6 +1,5 @@
 from typing import List
-from faculty_mgt.models.data.facultydb import faculty_signup_tbl, \
-    faculty_login_tbl
+from faculty_mgt.models.data.facultydb import faculty_signup_tbl, faculty_login_tbl
 from faculty_mgt.models.data.faculty import Login
 
 

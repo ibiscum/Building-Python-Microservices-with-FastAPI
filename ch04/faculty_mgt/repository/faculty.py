@@ -19,8 +19,7 @@ class FacultyRepository:
             profile_enc = jsonable_encoder(profile)
             profile_dict = dict(profile_enc)
             profile_dict.update(details)
-            faculty_tbl[faculty_id] = namedtuple("Faculty",
-                                                 profile_dict.keys())(
+            faculty_tbl[faculty_id] = namedtuple("Faculty", profile_dict.keys())(
                 *profile_dict.values()
             )
         except Exception:

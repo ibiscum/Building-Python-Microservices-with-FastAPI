@@ -20,11 +20,9 @@ class BookIssuanceService:
     ):
         result = False
         if book_id is not None:
-            result = self.repo.update_approval_details(approved_id, None,
-                                                       approver)
+            result = self.repo.update_approval_details(approved_id, None, approver)
         elif approver is not None:
-            result = self.repo.update_approval_details(approved_id, approver,
-                                                       None)
+            result = self.repo.update_approval_details(approved_id, approver, None)
         return result
 
     def remove_book_release(self, approved_id: int):

@@ -22,7 +22,7 @@ app.include_router(
 logger.add(
     "info.log",
     format="Log: [{extra[log_id]}: {time} - {level} - \
-           {message} ",
+           {message}",
     level="INFO",
     enqueue=True,
 )
@@ -70,4 +70,4 @@ app.mount("/ch04/faculty", faculty_main.faculty_app)
 app.mount("/ch04/library", library_main.library_app)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

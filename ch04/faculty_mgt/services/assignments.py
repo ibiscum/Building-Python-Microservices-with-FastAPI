@@ -29,8 +29,7 @@ class AssignmentService:
 
 class AssignmentSubmissionService:
     def __init__(self):
-        self.repo: AssignmentSubmissionRepository = \
-            AssignmentSubmissionRepository()
+        self.repo: AssignmentSubmissionRepository = AssignmentSubmissionRepository()
 
     def create_workbin(self, stud_id: int, faculty_id: int):
         bin_id = uuid4().int
