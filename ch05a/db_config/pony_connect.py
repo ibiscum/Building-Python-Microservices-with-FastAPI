@@ -3,8 +3,8 @@ from pony.orm import Database
 db = Database(
     "postgres",
     host="localhost",
-    port="5433",
+    port="5432",
     user="postgres",
-    password="admin2255",
+    password="secret",
     database="fcms",
 )

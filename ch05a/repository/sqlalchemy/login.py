@@ -1,12 +1,7 @@
 from typing import Dict, Any
 from sqlalchemy.orm import Session
-from models.data.sqlalchemy_models import (
-    Signup,
-    Login,
-    Profile_Members,
-    Attendance_Member,
-)
-from sqlalchemy import desc
+from models.data.sqlalchemy_models import Login
+# from sqlalchemy import desc
 
 
 class LoginRepository:
@@ -18,7 +13,7 @@ class LoginRepository:
             self.sess.add(login)
             self.sess.commit()
             print(login.id)
-        except:
+        except Exception:
             return False
         return True
 
@@ -27,16 +22,17 @@ class LoginRepository:
             self.sess.query(Login).filter(Login.id == id).update(details)
             self.sess.commit()
 
-        except:
+        except Exception:
             return False
         return True
 
     def delete_login(self, id: int) -> bool:
         try:
-            signup = self.sess.query(Login).filter(Login.id == id).delete()
+            # signup = self.sess.query(Login).filter(Login.id == id).delete()
+            self.sess.query(Login).filter(Login.id == id).delete()
             self.sess.commit()
 
-        except:
+        except Exception:
             return False
         return True
 

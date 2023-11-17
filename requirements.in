@@ -22,6 +22,7 @@ motor
 multidict
 odmantic
 passlib
+peewee
 pony
 psycopg2
 pyasn1

@@ -1,4 +1,5 @@
-from models.data.gino_models import Profile_Members, Profile_Trainers, Gym_Class
+from models.data.gino_models import Profile_Members, Profile_Trainers, \
+    Gym_Class
 from typing import Dict, Any
 
 
@@ -14,9 +15,10 @@ class TrainerRepository:
     async def update_trainer(self, id: int, details: Dict[str, Any]) -> bool:
         try:
             trainer = await Profile_Trainers.get(id)
-            # await Profile_Trainers.update.values(**details).where(Profile_Trainers.id == id).gino.status()
+            # await Profile_Trainers.update.values(**details).where(
+            # Profile_Trainers.id == id).gino.status()
             await trainer.update(**details).apply()
-        except:
+        except Exception:
             return False
         return True
 
@@ -24,7 +26,8 @@ class TrainerRepository:
         try:
             trainer = await Profile_Trainers.get(id)
             await trainer.delete()
-            # await Profile_Trainers.delete.where(Profile_Trainers.id == id).gino.status()
+            # await Profile_Trainers.delete.where(
+            # Profile_Trainers.id == id).gino.status()
         except Exception as e:
             print(e)
             return False
@@ -48,9 +51,12 @@ class GymClassRepository:
     async def join_member_classes(self):
         query = Gym_Class.join(Profile_Members).select()
         result = await query.gino.load(
-            Profile_Members.distinct(Profile_Members.id).load(add_child=Gym_Class)
+            Profile_Members.distinct(Profile_Members.id).load(
+                add_child=Gym_Class)
         ).all()
         return result
 
     async def join_classes_member(self):
-        result = await Profile_Members.load(add_child=Gym_Class).query.gino.all()
+        # result = await Profile_Members.load(add_child=Gym_Class).query.
+        # gino.all()
+        await Profile_Members.load(add_child=Gym_Class).query.gino.all()

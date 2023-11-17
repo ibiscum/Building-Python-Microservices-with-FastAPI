@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
 
-from models.request.buyer import BuyerReq, PurchaseHistoryReq, PurchaseStatusReq
+from models.request.buyer import BuyerReq, PurchaseHistoryReq, \
+    PurchaseStatusReq
 from repository.motor.buyer import BuyerRepository
 from db_config.motor_config import (
     create_async_db,
@@ -41,7 +42,7 @@ async def add_buyer(req: BuyerReq, db=Depends(create_db_collections)):
     repo: BuyerRepository = BuyerRepository(db["buyers"])
 
     result = await repo.insert_buyer(db["users"], loads(buyer_json))
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add buyer successful"}, status_code=201
         )

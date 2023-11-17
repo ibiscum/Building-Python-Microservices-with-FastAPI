@@ -9,7 +9,7 @@ class MemberRepository:
         try:
             with db_session:
                 Profile_Members(**details)
-        except:
+        except Exception:
             return False
         return True
 
@@ -25,7 +25,7 @@ class MemberRepository:
                 profile.height = details["height"]
                 profile.weight = details["weight"]
                 profile.trainer_id = details["trainer_id"]
-        except:
+        except Exception:
             return False
         return True
 
@@ -33,7 +33,7 @@ class MemberRepository:
         try:
             with db_session:
                 Profile_Members[id].delete()
-        except:
+        except Exception:
             return False
         return True
 

@@ -18,7 +18,7 @@ class SignupRepository:
             self.sess.add(signup)
             self.sess.commit()
             print(signup.id)
-        except:
+        except Exception:
             return False
         return True
 
@@ -27,16 +27,17 @@ class SignupRepository:
             self.sess.query(Signup).filter(Signup.id == id).update(details)
             self.sess.commit()
 
-        except:
+        except Exception:
             return False
         return True
 
     def delete_signup(self, id: int) -> bool:
         try:
-            signup = self.sess.query(Signup).filter(Signup.id == id).delete()
+            # signup = self.sess.query(Signup).filter(Signup.id == id).delete()
+            self.sess.query(Signup).filter(Signup.id == id).delete()
             self.sess.commit()
 
-        except:
+        except Exception:
             return False
         return True
 

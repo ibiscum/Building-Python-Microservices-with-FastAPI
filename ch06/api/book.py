@@ -27,7 +27,7 @@ def create_book(req: BookReq):
     book_json = dumps(book_dict, default=json_serial)
     repo: BookRepository = BookRepository()
     result = repo.insert_book(loads(book_json))
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -41,7 +41,7 @@ def update_book(id: int, req: BookReq):
     book_json = dumps(book_dict, default=json_serial)
     repo: BookRepository = BookRepository()
     result = repo.update_book(id, loads(book_json))
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -56,7 +56,7 @@ def assign_category(id: int, ref_id: int, cat_id: int):
     category = ref_repo.get_category(ref_id, cat_id)
     print(category)
     result = repo.add_category(id, category)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add category successful"}, status_code=201
         )
@@ -70,7 +70,7 @@ def assign_category(id: int, ref_id: int, cat_id: int):
 def remove_book(id: int):
     repo: BookRepository = BookRepository()
     result = repo.delete_book(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete book successful"}, status_code=201
         )

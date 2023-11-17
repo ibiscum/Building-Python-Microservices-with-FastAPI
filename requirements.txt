@@ -94,6 +94,8 @@ odmantic==0.9.2
     # via -r requirements.in
 passlib==1.7.4
     # via -r requirements.in
+peewee==3.17.0
+    # via -r requirements.in
 pony==0.7.17
     # via -r requirements.in
 psycopg2==2.9.9
