@@ -1,6 +1,6 @@
 from mongoframes.factory.makers import Q
 from models.data.mongoframe import Book, Category
-from typing import List, Dict, Any
+from typing import Dict, Any
 
 
 class BookRepository:
@@ -20,7 +20,8 @@ class BookRepository:
             for key, value in details.items():
                 setattr(book, key, value)
             book.update()
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -29,7 +30,8 @@ class BookRepository:
             book = Book.one(Q.id == id)
             book.category = category
             book.update()
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -37,7 +39,8 @@ class BookRepository:
         try:
             book = Book.one(Q.id == id)
             book.delete()
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 

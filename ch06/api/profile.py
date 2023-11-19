@@ -13,7 +13,7 @@ def create_profile(login_id: int, req: UserProfileReq):
     profile_dict = req.dict(exclude_unset=True)
     repo: UserProfileRepository = UserProfileRepository()
     result = repo.insert_profile(login_id, profile_dict)
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -26,7 +26,7 @@ def add_book_sale(login_id, req: BookForSaleReq):
     booksale_dict = req.dict(exclude_unset=True)
     repo: UserProfileRepository = UserProfileRepository()
     result = repo.add_book_sale(login_id, booksale_dict)
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -38,7 +38,7 @@ def add_book_sale(login_id, req: BookForSaleReq):
 def delete_book_sale(login_id: int, book_id: int):
     repo: UserProfileRepository = UserProfileRepository()
     result = repo.delete_book_sale(login_id, book_id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete booksale successful"}, status_code=201
         )
@@ -53,7 +53,7 @@ def update_profile(login_id: int, req: UserProfileReq):
     profile_dict = req.dict(exclude_unset=True)
     repo: UserProfileRepository = UserProfileRepository()
     result = repo.update_profile(login_id, profile_dict)
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -65,7 +65,7 @@ def update_profile(login_id: int, req: UserProfileReq):
 def block_delinquent(login_id: int):
     repo: UserProfileRepository = UserProfileRepository()
     result = repo.block_profile(login_id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "block delinquent successful"}, status_code=201
         )
@@ -79,7 +79,7 @@ def block_delinquent(login_id: int):
 def remove_profile(login_id: int):
     repo: UserProfileRepository = UserProfileRepository()
     result = repo.delete_profile(login_id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete profile successful"}, status_code=201
         )

@@ -16,7 +16,7 @@ class LoginRepository:
         try:
             login = Login.objects(id=id).get()
             login.update(password=newpass)
-        except:
+        except Exception:
             return False
         return True
 
@@ -24,13 +24,13 @@ class LoginRepository:
         try:
             login = Login.objects(id=id).get()
             login.delete()
-        except:
+        except Exception:
             return False
         return True
 
     def get_all_login(self):
         login = Login.objects()
-        login_list = [l.to_json() for l in login]
+        login_list = [login.to_json()]
         return login_list
 
     def get_login(self, id: int):

@@ -35,7 +35,7 @@ class BookRepository:
         try:
             book = Book.objects(id=id).get()
             book.update(**details)
-        except:
+        except Exception:
             return False
         return True
 
@@ -43,7 +43,7 @@ class BookRepository:
         try:
             book = Book.objects(id=id).get()
             book.update(unset__profile=1)
-        except:
+        except Exception:
             return False
         return True
 

@@ -17,10 +17,10 @@ class OrderRepository:
             item = await Cart.get(cart_id)
             order = await Order.get(id)
 
-            if order.orders == None:
+            if order.orders is None:
                 order.orders = list()
 
-            if not item == None:
+            if item is not None:
                 order.orders.append(item)
             await order.set({Order.orders: order.orders})
 
@@ -33,7 +33,7 @@ class OrderRepository:
         try:
             cart = await Order.get(id)
             await cart.set({**details})
-        except:
+        except Exception:
             return False
         return True
 
@@ -41,7 +41,7 @@ class OrderRepository:
         try:
             cart = await Order.get(id)
             await cart.delete()
-        except:
+        except Exception:
             return False
         return True
 
@@ -51,7 +51,7 @@ class OrderRepository:
             item = [i for i in order.orders if i.id == cart_id]
             order.orders.remove(item[0])
             await order.set({Order.orders: order.orders})
-        except Exception as e:
+        except Exception:
             return False
         return True
 

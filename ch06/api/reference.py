@@ -4,7 +4,8 @@ from fastapi.responses import JSONResponse
 from models.request.category import ReferenceReq, CategoryReq
 from repository.mongoframe.reference import ReferenceRepository
 from db_config.mongoframe_config import create_db_client
-from mongoframes import *
+
+# from mongoframes import *
 
 from datetime import date, datetime
 from json import dumps, loads
@@ -24,7 +25,7 @@ def create_reference(req: ReferenceReq):
     reference_json = dumps(reference_dict, default=json_serial)
     repo: ReferenceRepository = ReferenceRepository()
     result = repo.insert_reference(loads(reference_json))
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -38,7 +39,7 @@ def add_category(id: int, req: CategoryReq):
     category_json = dumps(category_dict, default=json_serial)
     repo: ReferenceRepository = ReferenceRepository()
     result = repo.add_category(id, loads(category_json))
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add category successful"}, status_code=201
         )
@@ -54,7 +55,7 @@ def update_reference(id: int, req: ReferenceReq):
     reference_json = dumps(reference_dict, default=json_serial)
     repo: ReferenceRepository = ReferenceRepository()
     result = repo.update_reference(id, loads(reference_json))
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -66,7 +67,7 @@ def update_reference(id: int, req: ReferenceReq):
 def remove_reference(id: int):
     repo: ReferenceRepository = ReferenceRepository()
     result = repo.delete_reference(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete reference successful"}, status_code=201
         )

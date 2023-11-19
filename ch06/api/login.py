@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 from models.request.login import LoginReq
@@ -18,7 +18,7 @@ def create_login(
     login_dict = req.dict(exclude_unset=True)
     repo: LoginRepository = LoginRepository()
     result = repo.insert_login(login_dict)
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -30,7 +30,7 @@ def create_login(
 def update_password(id: int, newpass: str):
     repo: LoginRepository = LoginRepository()
     result = repo.update_password(id, newpass)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "update password successful"}, status_code=201
         )
@@ -44,7 +44,7 @@ def update_password(id: int, newpass: str):
 def remove_login(id: int):
     repo: LoginRepository = LoginRepository()
     result = repo.delete_login(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete login successful"}, status_code=201
         )

@@ -18,11 +18,12 @@ class ReferenceRepository:
         try:
             item = Category(**details)
             reference = Reference.one(Q.id == id)
-            if reference.categories == None:
+            if reference.categories is None:
                 reference.categories = list()
             reference.categories.append(item)
             reference.update()
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -31,14 +32,16 @@ class ReferenceRepository:
             reference = Reference.one(Q.id == id)
             category = [c for c in reference.categories if c["id"] == cat_id]
             return category[0]
-        except:
+        except Exception as e:
+            print(e)
             return None
 
     def get_all_categories(self, id: int) -> List[Category]:
         try:
             reference = Reference.one(Q.id == id)
             return reference.categories
-        except:
+        except Exception as e:
+            print(e)
             return None
 
     def update_reference(self, id: int, details: Dict[str, Any]) -> bool:
@@ -47,7 +50,8 @@ class ReferenceRepository:
             for key, value in details.items():
                 setattr(reference, key, value)
             reference.update()
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -55,7 +59,8 @@ class ReferenceRepository:
         try:
             reference = Reference.one(Q.id == id)
             reference.delete()
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 

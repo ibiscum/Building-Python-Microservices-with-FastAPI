@@ -4,7 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 def create_db_connection():
     global client_od
-    client_od = AsyncIOMotorClient(f"mongodb://localhost:27017/")
+    client_od = AsyncIOMotorClient("mongodb://localhost:27017/")
 
 
 def create_db_engine():

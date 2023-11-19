@@ -1,5 +1,4 @@
-from models.data.gino_models import Profile_Members, Profile_Trainers, \
-    Gym_Class
+from models.data.gino_models import Profile_Members, Profile_Trainers, Gym_Class
 from typing import Dict, Any
 
 
@@ -51,8 +50,7 @@ class GymClassRepository:
     async def join_member_classes(self):
         query = Gym_Class.join(Profile_Members).select()
         result = await query.gino.load(
-            Profile_Members.distinct(Profile_Members.id).load(
-                add_child=Gym_Class)
+            Profile_Members.distinct(Profile_Members.id).load(add_child=Gym_Class)
         ).all()
         return result
 

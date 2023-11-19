@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 from models.request.order import CartReq
@@ -27,7 +27,7 @@ async def add_cart_item(req: CartReq):
     cart_json = dumps(cart_dict, default=json_serial)
     repo: CartRepository = CartRepository()
     result = await repo.add_item(loads(cart_json))
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -39,7 +39,7 @@ async def add_cart_item(req: CartReq):
 async def update_item_qty(id: int, qty: int):
     repo: CartRepository = CartRepository()
     result = await repo.update_qty(id, qty)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "update item qty successful"}, status_code=201
         )
@@ -53,7 +53,7 @@ async def update_item_qty(id: int, qty: int):
 async def add_item_discount(book_id: int, discount: float):
     repo: CartRepository = CartRepository()
     result = await repo.add_discount(book_id, discount)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add item discount successful"}, status_code=201
         )
@@ -67,7 +67,7 @@ async def add_item_discount(book_id: int, discount: float):
 async def remove_cart_item(id: int):
     repo: CartRepository = CartRepository()
     result = await repo.delete_item(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete item successful"}, status_code=201
         )

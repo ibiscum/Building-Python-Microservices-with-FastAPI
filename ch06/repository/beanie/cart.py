@@ -16,7 +16,7 @@ class CartRepository:
         try:
             cart = await Cart.get(id)
             await cart.set({Cart.qty: qty})
-        except:
+        except Exception:
             return False
         return True
 
@@ -24,7 +24,7 @@ class CartRepository:
         try:
             cart = await Cart.find_one(Cart.book_id == book_id)
             await cart.set({Cart.discount: discount})
-        except:
+        except Exception:
             return False
         return True
 
@@ -32,7 +32,7 @@ class CartRepository:
         try:
             cart = await Cart.get(id)
             await cart.delete()
-        except:
+        except Exception:
             return False
         return True
 

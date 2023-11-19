@@ -36,7 +36,7 @@ class ReceiptRepository:
         try:
             receipt = await Receipt.get(id)
             await receipt.set({**details})
-        except:
+        except Exception:
             return False
         return True
 
@@ -44,7 +44,7 @@ class ReceiptRepository:
         try:
             receipt = await Receipt.get(id)
             await receipt.delete()
-        except:
+        except Exception:
             return False
         return True
 

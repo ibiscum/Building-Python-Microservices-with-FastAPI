@@ -60,14 +60,15 @@ async def add_purchase_history(
     history_json = dumps(history_dict, default=json_serialize_date)
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = await repo.add_purchase_history(id, loads(history_json))
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add purchase history login successful"},
             status_code=201,
         )
     else:
         return JSONResponse(
-            content={"message": "add purchase history unsuccessful"}, status_code=500
+            content={"message": "add purchase history unsuccessful"},
+            status_code=500
         )
 
 
@@ -77,13 +78,15 @@ async def delete_purchase_history(
 ):
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = await repo.delete_purchase_history(id, hist_id)
-    if result == True:
+    if result is True:
         return JSONResponse(
-            content={"message": "delete purchase history successful"}, status_code=201
+            content={"message": "delete purchase history successful"},
+            status_code=201
         )
     else:
         return JSONResponse(
-            content={"message": "delete purchase history unsuccessful"}, status_code=500
+            content={"message": "delete purchase history unsuccessful"},
+            status_code=500
         )
 
 
@@ -91,13 +94,15 @@ async def delete_purchase_history(
 async def delete_customer_status(id: int, db=Depends(create_db_collections)):
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = await repo.delete_customer_status(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
-            content={"message": "delete customer status successful"}, status_code=201
+            content={"message": "delete customer status successful"},
+            status_code=201
         )
     else:
         return JSONResponse(
-            content={"message": "delete customer status unsuccessful"}, status_code=500
+            content={"message": "delete customer status unsuccessful"},
+            status_code=500
         )
 
 
@@ -109,23 +114,26 @@ async def add_customer_status(
     status_json = dumps(status_dict, default=json_serialize_date)
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = await repo.add_customer_status(id, loads(status_json))
-    if result == True:
+    if result is True:
         return JSONResponse(
-            content={"message": "add customer status successful"}, status_code=201
+            content={"message": "add customer status successful"},
+            status_code=201
         )
     else:
         return JSONResponse(
-            content={"message": "add customer status unsuccessful"}, status_code=500
+            content={"message": "add customer status unsuccessful"},
+            status_code=500
         )
 
 
 @router.patch("/buyer/async/update")
-async def update_buyer(id: int, req: BuyerReq, db=Depends(create_db_collections)):
+async def update_buyer(id: int, req: BuyerReq,
+                       db=Depends(create_db_collections)):
     buyer_dict = req.dict(exclude_unset=True)
     buyer_json = dumps(buyer_dict, default=json_serialize_date)
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = await repo.update_buyer(id, loads(buyer_json))
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "update buyer successful"}, status_code=201
         )
@@ -139,7 +147,7 @@ async def update_buyer(id: int, req: BuyerReq, db=Depends(create_db_collections)
 async def delete_buyer(id: int, db=Depends(create_db_collections)):
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = await repo.delete_buyer(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete buyer successful"}, status_code=201
         )

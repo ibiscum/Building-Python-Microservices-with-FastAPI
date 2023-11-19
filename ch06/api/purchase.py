@@ -31,7 +31,7 @@ async def add_purchase(req: PurchaseReq, engine=Depends(create_db_engine)):
     purchase_json = dumps(purchase_dict, default=json_serial)
     repo: PurchaseRepository = PurchaseRepository(engine)
     result = await repo.insert_purchase(loads(purchase_json))
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -45,7 +45,7 @@ async def update_purchase(id: int, req: PurchaseReq, engine=Depends(create_db_en
     profile_json = dumps(profile_dict, default=json_serial)
     repo: PurchaseRepository = PurchaseRepository(engine)
     result = await repo.update_purchase(id, loads(profile_json))
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -57,7 +57,7 @@ async def update_purchase(id: int, req: PurchaseReq, engine=Depends(create_db_en
 async def delete_purchase(id: int, engine=Depends(create_db_engine)):
     repo: PurchaseRepository = PurchaseRepository(engine)
     result = await repo.delete_purchase(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete purchase successful"}, status_code=201
         )

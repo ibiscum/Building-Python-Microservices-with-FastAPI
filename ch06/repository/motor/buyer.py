@@ -13,12 +13,13 @@ class BuyerRepository:
         try:
             user = await users.find_one({"_id": details["user_id"]})
             print(user)
-            if user == None:
+            if user is None:
                 return False
             else:
                 await self.buyers.insert_one(details)
 
         except Exception as e:
+            print(e)
             return False
         return True
 
@@ -31,16 +32,18 @@ class BuyerRepository:
                 {"$set": {"purchase_history": buyer["purchase_history"]}},
             )
         except Exception as e:
+            print(e)
             return False
         return True
 
     async def add_customer_status(self, id: int, details: Dict[str, Any]):
         try:
-            buyer = await self.buyers.find_one({"buyer_id": id})
+            # buyer = await self.buyers.find_one({"buyer_id": id})
             await self.buyers.update_one(
                 {"buyer_id": id}, {"$set": {"customer_status": details}}
             )
         except Exception as e:
+            print(e)
             return False
         return True
 
@@ -56,6 +59,7 @@ class BuyerRepository:
                 {"$set": {"purchase_history": buyer["purchase_history"]}},
             )
         except Exception as e:
+            print(e)
             return False
         return True
 
@@ -64,21 +68,24 @@ class BuyerRepository:
             await self.buyers.update_one(
                 {"buyer_id": id}, {"$set": {"customer_status": None}}
             )
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
     async def update_buyer(self, id: int, details: Dict[str, Any]) -> bool:
         try:
             await self.buyers.update_one({"buyer_id": id}, {"$set": details})
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
     async def delete_buyer(self, id: int) -> bool:
         try:
             await self.buyers.delete_many({"buyer_id": id})
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 

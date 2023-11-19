@@ -41,7 +41,8 @@ class UserProfileRepository:
             profile = UserProfile(**details)
             login = Login.objects(id=login_id).get()
             login.update(profile=profile)
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -49,7 +50,8 @@ class UserProfileRepository:
         try:
             login = Login.objects(id=login_id).get()
             login.update(unset__profile=1)
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -59,12 +61,13 @@ class UserProfileRepository:
             profile = login.profile
             profile.status = False
             login.update(profile=profile)
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
     def get_all_profile(self):
-        profiles = Login.objects.filter(profile__login_id__exists=True)
+        # profiles = Login.objects.filter(profile__login_id__exists=True)
         profiles_dict = list(
             map(
                 lambda h: h.profile.to_json(),

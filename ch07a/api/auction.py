@@ -23,7 +23,7 @@ def add_auction(
     repo: AuctionsRepository = AuctionsRepository(sess)
     auction = Auctions(**auc_dict)
     result = repo.insert_auction(auction)
-    if result == True:
+    if result is True:
         return auction
     else:
         return JSONResponse(

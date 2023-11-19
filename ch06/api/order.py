@@ -23,7 +23,7 @@ async def add_order(req: OrderReq):
     order_json = dumps(order_dict, default=json_serial)
     repo: OrderRepository = OrderRepository()
     result = await repo.insert_order(loads(order_json))
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -35,7 +35,7 @@ async def add_order(req: OrderReq):
 async def add_order_item(id: int, cart_id: int):
     repo: OrderRepository = OrderRepository()
     result = await repo.add_order_item(id, cart_id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add order item successful"}, status_code=201
         )
@@ -49,7 +49,7 @@ async def add_order_item(id: int, cart_id: int):
 async def remove_order_item(id: int, cart_id: int):
     repo: OrderRepository = OrderRepository()
     result = await repo.delete_order_item(id, cart_id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete order item successful"}, status_code=201
         )
@@ -65,7 +65,7 @@ async def update_order(id: int, req: OrderReq):
     order_json = dumps(order_dict, default=json_serial)
     repo: OrderRepository = OrderRepository()
     result = await repo.update_order(id, loads(order_json))
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "update order successful"}, status_code=201
         )
@@ -79,7 +79,7 @@ async def update_order(id: int, req: OrderReq):
 async def remove_order(id: int):
     repo: OrderRepository = OrderRepository()
     result = await repo.delete_order(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete order successful"}, status_code=201
         )

@@ -23,7 +23,7 @@ async def add_receipt(req: ReceiptReq):
     receipt_json = dumps(receipt_dict, default=json_serial)
     repo: ReceiptRepository = ReceiptRepository()
     result = await repo.insert_receipt(loads(receipt_json))
-    if result == True:
+    if result is True:
         return req
     else:
         return JSONResponse(
@@ -35,7 +35,7 @@ async def add_receipt(req: ReceiptReq):
 async def add_order(id: int, order_id: int):
     repo: ReceiptRepository = ReceiptRepository()
     result = await repo.add_order_receipt(id, order_id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add final order successful"}, status_code=201
         )
@@ -49,7 +49,7 @@ async def add_order(id: int, order_id: int):
 async def remove_order(id: int):
     repo: ReceiptRepository = ReceiptRepository()
     result = await repo.delete_order_receipt(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete final order successful"}, status_code=201
         )
@@ -65,7 +65,7 @@ async def update_receipt(id: int, req: ReceiptReq):
     receipt_json = dumps(receipt_dict, default=json_serial)
     repo: ReceiptRepository = ReceiptRepository()
     result = await repo.update_receipt(id, loads(receipt_json))
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "update receipt successful"}, status_code=201
         )
@@ -79,7 +79,7 @@ async def update_receipt(id: int, req: ReceiptReq):
 async def remove_receipt(id: int):
     repo: ReceiptRepository = ReceiptRepository()
     result = await repo.delete_receipt(id)
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete receipt successful"}, status_code=201
         )

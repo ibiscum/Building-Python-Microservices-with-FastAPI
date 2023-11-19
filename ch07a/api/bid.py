@@ -23,11 +23,12 @@ def add_bid(
     repo: BidsRepository = BidsRepository(sess)
     bid = Bids(**bid_dict)
     result = repo.insert_bid(bid)
-    if result == True:
+    if result is True:
         return bid
     else:
         return JSONResponse(
-            content={"message": "create bid problem encountered"}, status_code=500
+            content={"message": "create bid problem encountered"},
+            status_code=500
         )
 
 
@@ -46,7 +47,8 @@ def update_bid(
             content={"message": "bid updated successfully"}, status_code=201
         )
     else:
-        return JSONResponse(content={"message": "update bid error"}, status_code=500)
+        return JSONResponse(content={"message": "update bid error"},
+                            status_code=500)
 
 
 @router.delete("/bid/delete/{id}")
@@ -59,7 +61,8 @@ def delete_bid(
     result = repo.delete_bid(id)
     if result:
         return JSONResponse(
-            content={"message": "auction updated successfully"}, status_code=201
+            content={"message": "auction updated successfully"},
+            status_code=201
         )
     else:
         return JSONResponse(

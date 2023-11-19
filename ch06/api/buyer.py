@@ -33,7 +33,7 @@ def add_buyer(req: BuyerReq, db=Depends(create_db_collections)):
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = repo.insert_buyer(db["users"], loads(buyer_json))
 
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add buyer successful"}, status_code=201
         )
@@ -47,12 +47,12 @@ def add_buyer(req: BuyerReq, db=Depends(create_db_collections)):
 def add_purchase_history(
     id: int, req: PurchaseHistoryReq, db=Depends(create_db_collections)
 ):
-    history_dict = req.dict(exclude_unset=True)
+    history_dict = req.model_dump(exclude_unset=True)
     history_json = dumps(history_dict, default=json_serialize_date)
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = repo.add_purchase_history(id, loads(history_json))
 
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add purchase history login successful"},
             status_code=201,
@@ -68,7 +68,7 @@ def delete_purchase_history(id: int, hist_id: int, db=Depends(create_db_collecti
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = repo.delete_purchase_history(id, hist_id)
 
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete purchase history successful"}, status_code=201
         )
@@ -83,7 +83,7 @@ def delete_customer_status(id: int, db=Depends(create_db_collections)):
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = repo.delete_customer_status(id)
 
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete customer status successful"}, status_code=201
         )
@@ -102,7 +102,7 @@ def add_customer_status(
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = repo.add_customer_status(id, loads(status_json))
 
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "add customer status successful"}, status_code=201
         )
@@ -114,12 +114,12 @@ def add_customer_status(
 
 @router.patch("/buyer/update")
 def update_buyer(id: int, req: BuyerReq, db=Depends(create_db_collections)):
-    buyer_dict = req.dict(exclude_unset=True)
+    buyer_dict = req.model_dump(exclude_unset=True)
     buyer_json = dumps(buyer_dict, default=json_serialize_date)
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = repo.update_buyer(id, loads(buyer_json))
 
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "update buyer successful"}, status_code=201
         )
@@ -134,7 +134,7 @@ def delete_buyer(id: int, db=Depends(create_db_collections)):
     repo: BuyerRepository = BuyerRepository(db["buyers"])
     result = repo.delete_buyer(id)
 
-    if result == True:
+    if result is True:
         return JSONResponse(
             content={"message": "delete buyer successful"}, status_code=201
         )

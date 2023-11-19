@@ -24,7 +24,7 @@ def add_signup(
     repo: SignupRepository = SignupRepository(sess)
     signup = Signup(password=req.password, username=req.username, id=req.id)
     result = repo.insert_signup(signup)
-    if result == True:
+    if result is True:
         return signup
     else:
         return JSONResponse(
