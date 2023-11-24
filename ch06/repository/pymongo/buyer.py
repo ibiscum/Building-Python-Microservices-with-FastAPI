@@ -1,11 +1,11 @@
 from typing import Dict, Any
 from dataclasses import asdict
 from models.data.pymongo import Buyer
-from datetime import datetime
+# from datetime import datetime
 from bson.json_util import dumps
 import json
 
-from bson.dbref import DBRef
+# from bson.dbref import DBRef
 
 
 class BuyerRepository:
@@ -16,7 +16,7 @@ class BuyerRepository:
         try:
             user = users.find_one({"_id": details["user_id"]})
             print(user)
-            if user == None:
+            if user is None:
                 return False
             else:
                 self.buyers.insert_one(details)
@@ -35,6 +35,7 @@ class BuyerRepository:
                 {"$set": {"purchase_history": buyer["purchase_history"]}},
             )
         except Exception as e:
+            print(e)
             return False
         return True
 
