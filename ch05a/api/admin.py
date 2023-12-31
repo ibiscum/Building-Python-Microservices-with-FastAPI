@@ -29,11 +29,12 @@ def add_signup(req: SignupReq, sess: Session = Depends(sess_db)):
     repo: SignupRepository = SignupRepository(sess)
     signup = Signup(password=req.password, username=req.username, id=req.id)
     result = repo.insert_signup(signup)
-    if result == True:
+    if result is True:
         return signup
     else:
         return JSONResponse(
-            content={"message": "create signup problem encountered"}, status_code=500
+            content={"message": "create signup problem encountered"},
+            status_code=500
         )
 
 
@@ -51,11 +52,13 @@ def update_signup(id: int, req: SignupReq, sess: Session = Depends(sess_db)):
     result = repo.update_signup(id, signup_dict)
     if result:
         return JSONResponse(
-            content={"message": "profile updated successfully"}, status_code=201
+            content={"message": "profile updated successfully"},
+            status_code=201
         )
     else:
         return JSONResponse(
-            content={"message": "update profile error"}, status_code=500
+            content={"message": "update profile error"},
+            status_code=500
         )
 
 
@@ -65,11 +68,13 @@ def delete_signup(id: int, sess: Session = Depends(sess_db)):
     result = repo.delete_signup(id)
     if result:
         return JSONResponse(
-            content={"message": "profile deleted successfully"}, status_code=201
+            content={"message": "profile deleted successfully"},
+            status_code=201
         )
     else:
         return JSONResponse(
-            content={"message": "delete profile error"}, status_code=500
+            content={"message": "delete profile error"},
+            status_code=500
         )
 
 

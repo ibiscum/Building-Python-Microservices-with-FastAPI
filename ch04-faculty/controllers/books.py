@@ -37,7 +37,8 @@ def request_borrow_book(request: BookRequestReq):
 @router.get("/books/issuance/list")
 def list_all_issuance():
     with requests.Session() as sess:
-        response = sess.get("http://localhost:8001/ch04/library/book/issuance/list")
+        response = sess.get(
+            "http://localhost:8001/ch04/library/book/issuance/list")
         return response.json()
 
 

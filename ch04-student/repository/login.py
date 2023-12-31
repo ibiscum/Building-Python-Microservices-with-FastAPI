@@ -1,4 +1,4 @@
-from models.data.studentsdb import stud_signup_tbl, stud_login_tbl
+from models.data.studentsdb import stud_login_tbl
 from models.data.students import Login
 
 
@@ -6,7 +6,8 @@ class StudentLoginRepository:
     def insert_login(self, login: Login) -> bool:
         try:
             stud_login_tbl[login.user_id] = login
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -14,14 +15,16 @@ class StudentLoginRepository:
         try:
             login = stud_login_tbl[user_id]
             login.password = newpass
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
     def delete_login(self, user_id: int) -> bool:
         try:
             del stud_login_tbl[user_id]
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 

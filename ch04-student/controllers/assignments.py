@@ -11,7 +11,8 @@ router = APIRouter()
 @router.get("/assignment/list")
 async def list_assignments():
     async with httpx.AsyncClient() as client:
-        result = await client.get("http://localhost:8002/ch04/faculty/assignments/list")
+        result = await client.get(
+            "http://localhost:8002/ch04/faculty/assignments/list")
         return result.json()
 
 

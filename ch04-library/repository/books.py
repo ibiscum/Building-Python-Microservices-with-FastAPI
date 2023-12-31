@@ -2,14 +2,15 @@ from typing import Dict, Any
 from fastapi.encoders import jsonable_encoder
 from models.data.librarydb import book_tbl
 from models.data.library import Book
-from collections import namedtuple
+# from collections import namedtuple
 
 
 class BookRepository:
     def insert_book(self, book: Book) -> bool:
         try:
             book_tbl[book.book_id] = book
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -20,14 +21,16 @@ class BookRepository:
             profile_dict = dict(profile_enc)
             profile_dict.update(details)
             book_tbl[book_id] = Book(**profile_dict)
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
     def delete_book(self, book_id: int) -> bool:
         try:
             del book_tbl[book_id]
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 

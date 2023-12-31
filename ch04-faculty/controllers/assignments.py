@@ -48,12 +48,14 @@ def submit_assignment(assignment: AssignmentRequest):
     assignment_submission_service: AssignmentSubmissionService = (
         AssignmentSubmissionService()
     )
-    result = assignment_submission_service.add_assigment(assignment.bin_id, item)
+    result = assignment_submission_service.add_assigment(assignment.bin_id,
+                                                         item)
     if result is True:
         return jsonable_encoder(item)
     else:
         return JSONResponse(
-            content={"message": "submission problem encountered"}, status_code=500
+            content={"message": "submission problem encountered"},
+            status_code=500
         )
 
 
@@ -62,7 +64,8 @@ def create_workbin(stud_id: int, faculty_id: int):
     assignment_submission_service: AssignmentSubmissionService = (
         AssignmentSubmissionService()
     )
-    result, bin_id = assignment_submission_service.create_workbin(stud_id, faculty_id)
+    result, bin_id = assignment_submission_service.create_workbin(stud_id,
+                                                                  faculty_id)
     if result is True:
         return JSONResponse(
             content={"message": "workbin %s is created successful" % (bin_id)},
@@ -70,7 +73,8 @@ def create_workbin(stud_id: int, faculty_id: int):
         )
     else:
         return JSONResponse(
-            content={"message": "submission problem encountered"}, status_code=500
+            content={"message": "submission problem encountered"},
+            status_code=500
         )
 
 

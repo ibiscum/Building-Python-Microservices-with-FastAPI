@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI, Depends
 from controllers import admin, management
 from configuration.config import LibrarySettings
@@ -18,3 +19,7 @@ def index_library(config: LibrarySettings = Depends(build_config)):
         "webmaster": config.webmaster,
         "created": config.created,
     }
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8001)

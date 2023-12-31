@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI, Depends
 from controllers import reservations, admin, assignments
 from configuration.config import StudentSettings, ServerSettings
@@ -28,3 +29,7 @@ def index_student(
         "development_server": fconfig.development_server,
         "dev_port": fconfig.dev_port,
     }
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8002)

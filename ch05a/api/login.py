@@ -6,7 +6,7 @@ from db_config.sqlalchemy_connect import SessionFactory
 from models.requests.login import LoginReq
 from models.data.sqlalchemy_models import Login
 from repository.sqlalchemy.login import LoginRepository
-from typing import List
+# from typing import List
 
 
 router = APIRouter()

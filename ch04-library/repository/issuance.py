@@ -8,7 +8,8 @@ class BookIssuanceRepository:
     def insert_approval(self, approved: BookIssuance):
         try:
             book_issuance_tbl[approved.issue_id] = approved
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -20,18 +21,20 @@ class BookIssuanceRepository:
     ):
         approved = book_issuance_tbl[approved_id]
         try:
-            if not book_id == None:
+            if book_id is not None:
                 approved.book_id = book_id
-            elif not approver == None:
+            elif approver is not None:
                 approved.approved_by = approver
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
     def delete_approval(self, approved_id: int):
         try:
             del book_issuance_tbl[approved_id]
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
@@ -41,7 +44,8 @@ class BookIssuanceRepository:
             issuance.returned_date = returned_date
             book_issuance_tbl[issue_id] = issuance
 
-        except:
+        except Exception as e:
+            print(e)
             return False
         return True
 
