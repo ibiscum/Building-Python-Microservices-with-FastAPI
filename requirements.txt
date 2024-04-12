@@ -63,7 +63,7 @@ httpcore==0.18.0
     #   httpx
 httpx==0.25.0
     # via -r requirements.in
-idna==3.4
+idna==3.7
     # via
     #   -r requirements.in
     #   anyio
