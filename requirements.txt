@@ -133,7 +133,7 @@ python-dotenv==1.0.0
     #   pydantic-settings
 python-jose==3.3.0
     # via -r requirements.in
-python-multipart==0.0.6
+python-multipart==0.0.7
     # via -r requirements.in
 requests==2.31.0
     # via -r requirements.in
