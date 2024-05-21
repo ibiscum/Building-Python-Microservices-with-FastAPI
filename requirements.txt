@@ -135,7 +135,7 @@ python-jose==3.3.0
     # via -r requirements.in
 python-multipart==0.0.7
     # via -r requirements.in
-requests==2.31.0
+requests==2.32.0
     # via -r requirements.in
 rfc3986==2.0.0
     # via -r requirements.in
