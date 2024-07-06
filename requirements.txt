@@ -19,7 +19,7 @@ blinker==1.6.3
     # via
     #   -r requirements.in
     #   mongoframes
-certifi==2023.7.22
+certifi==2024.7.4
     # via
     #   -r requirements.in
     #   httpcore
@@ -40,7 +40,7 @@ dependency-injector==4.41.0
     # via -r requirements.in
 dnspython==2.6.1
     # via pymongo
-ecdsa==0.18.0
+ecdsa==0.19.0
     # via python-jose
 faker==19.10.0
     # via
@@ -135,7 +135,7 @@ python-jose==3.3.0
     # via -r requirements.in
 python-multipart==0.0.7
     # via -r requirements.in
-requests==2.32.0
+requests==2.32.2
     # via -r requirements.in
 rfc3986==2.0.0
     # via -r requirements.in
@@ -172,7 +172,7 @@ typing-extensions==4.8.0
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
-urllib3==2.0.7
+urllib3==2.2.2
     # via
     #   -r requirements.in
     #   requests
